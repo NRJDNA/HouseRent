@@ -4,6 +4,7 @@ import com.example.houserentingsystem.component.authorizeUser.AuthorizeUser;
 import com.example.houserentingsystem.model.User;
 import com.example.houserentingsystem.model.admin.AdminRegister;
 import com.example.houserentingsystem.model.register.Register;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

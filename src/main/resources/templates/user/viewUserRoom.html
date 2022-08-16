@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View || UserRoom</title>
+    <style>
+        .tab
+        {
+            margin-right:300px;
+            margin-left: 300px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body style="background-color: #dddddd">
+<div th:replace="fragment/userResuable ::generic_cs"></div>
+<div th:replace="fragment/userResuable ::script"></div>
+<div th:replace="fragment/userResuable ::fonts"></div>
+<div th:replace="fragment/userResuable ::navbar_css"></div>
+<div th:replace="fragment/userResuable ::navbar_css"></div>
+<div th:replace="fragment/userResuable ::usernavbar"></div>
+<div class="tab">
+    <gh2>UserRoom Details</gh2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"> Name</th>
+            <th scope="col"> Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Room Address</td>
+            <td th:text="${userRoomView.address}"></td>
+        </tr>
+        <tr>
+            <td>Room Date</td>
+            <td th:text="${userRoomView.userRoomDate}"></td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>Complain Date</td>-->
+<!--            <td th:text="${complainView.complainDate}"></td>-->
+<!--        </tr>-->
+        <tr>
+            <td>Room Type</td>
+            <td th:text="${userRoomView.roomType}"></td>
+        </tr>
+<!--        <tr>-->
+<!--            <td>Room Status</td>-->
+<!--            <td th:text="${userRoomView.roomStatus}"></td>-->
+<!--        </tr>-->
+        <tr>
+            <td>Room Description</td>
+            <td th:text="${userRoomView.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

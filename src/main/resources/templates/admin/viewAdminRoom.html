@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View || UserRoom</title>
+    <style>
+        .tab
+        {
+            margin-right:300px;
+            margin-left: 300px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body style="background-color: #dddddd">
+<div th:replace="fragment/adminResuable ::generic_cs"></div>
+<div th:replace="fragment/adminResuable ::script"></div>
+<div th:replace="fragment/adminResuable ::fonts"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::adminnavbar"></div>
+<div class="tab">
+    <gh2>Admin Details</gh2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"> Table</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Room Address</td>
+            <td th:text="${adminRoomView.address}"></td>
+        </tr>
+        <tr>
+            <td>Room Date</td>
+            <td th:text="${adminRoomView.adminRoomDate}"></td>
+        </tr>
+        <tr>
+            <td>Room Type</td>
+            <td th:text="${adminRoomView.roomType}"></td>
+        </tr>
+        <!--        <tr>-->
+        <!--            <td>Room Status</td>-->
+        <!--            <td th:text="${userRoomView.roomStatus}"></td>-->
+        <!--        </tr>-->
+        <tr>
+            <td>Room Description</td>
+            <td th:text="${adminRoomView.description}"></td>
+        </tr>
+        <tr>
+            <td>Room Price</td>
+            <td th:text="${adminRoomView.price}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

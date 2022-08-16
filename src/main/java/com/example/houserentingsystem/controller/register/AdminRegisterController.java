@@ -43,4 +43,6 @@ public class AdminRegisterController {
         model.addAttribute("adminRegisterDto", adminRegisterDto);
         return "admin/adminRegisterPage";
     }
+
+
 }

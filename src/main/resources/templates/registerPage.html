@@ -1,0 +1,183 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Register</title>-->
+<!--    <style>-->
+<!--        .home {-->
+<!--            margin-left: 5%;-->
+<!--            margin-top: 56px;-->
+<!--            margin-right: 1%;-->
+<!--            position: absolute;-->
+<!--        }-->
+
+<!--        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');-->
+
+<!--        .grid-wrapper {-->
+<!--            &#45;&#45;auto-grid-min-size: 16rem;-->
+<!--            display: grid;-->
+<!--            grid-gap: 2rem;-->
+<!--            grid-template-columns: repeat(auto-fill, minmax(var(&#45;&#45;auto-grid-min-size), 1fr));-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--            font-family: 'Montserrat', sans-serif;-->
+
+<!--        }-->
+
+<!--        .grid-wrapper li {-->
+<!--            background-color: #09fa09;-->
+<!--            color: #ffffff;-->
+<!--            font-size: 24px;-->
+<!--            list-style-type: none;-->
+<!--            padding: 2rem;-->
+<!--            text-align: center;-->
+<!--            /*text-transform: capitalize;*/-->
+<!--            font-weight: 600;-->
+<!--            border-radius: 5px;-->
+<!--        }-->
+
+<!--        .main-container {-->
+<!--            margin-right: auto;-->
+<!--            margin-left: 30%;-->
+<!--            margin-top: 150px;-->
+<!--            max-width: 1170px;-->
+<!--            padding: 2rem 1rem;-->
+<!--            /*position: absolute;*/-->
+<!--        }-->
+
+<!--        section {-->
+<!--            margin: 30px auto;-->
+<!--            width: 75%;-->
+<!--            border: 1px solid blueviolet;-->
+<!--        }-->
+
+<!--        section button {-->
+<!--            font-size: 20px;-->
+<!--            width: 30%;-->
+<!--            padding: 10px;-->
+<!--            background-color: aqua;-->
+<!--            border: 1px solid rgb(34, 31, 31);-->
+<!--            border-radius: 25px;-->
+<!--            margin-left: 20rem;-->
+<!--            margin-bottom: 10px;-->
+<!--            cursor: pointer;;-->
+<!--        }-->
+
+<!--        .main-container .grid-wrapper li img {-->
+<!--            width: 30px;-->
+<!--            height: 40px;-->
+<!--            border: 1px solid greenyellow;-->
+
+
+<!--        }-->
+
+<!--        .main-container .grid-wrapper .header h3 {-->
+<!--            text-align: center;-->
+<!--            color: #263037-->
+<!--        }-->
+
+<!--        a {-->
+<!--            text-decoration: none;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            color: #263037;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:replace="fragment/resuable ::generic_css"></div>-->
+<!--<div th:replace="fragment/resuable ::script"></div>-->
+<!--<div th:replace="fragment/resuable ::font"></div>-->
+<!--<div th:replace="fragment/resuable ::navbar_css"></div>-->
+<!--<div th:replace="fragment/resuable ::navbar_css"></div>-->
+<!--&lt;!&ndash;<div th:replace="fragment/resuable ::navbar"></div>&ndash;&gt;-->
+<!--<div class="main-container">-->
+<!--    <ul class="grid-wrapper">-->
+<!--        <div class="header">-->
+<!--            <h3>Renter</h3>-->
+<!--            <a th:href="@{/adminRegister}">-->
+<!--                <li>-->
+<!--                    <p>Renter Register</p>-->
+<!--                </li>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        <div class="header">-->
+<!--            <h3>Roomer</h3>-->
+<!--            <a th:href="@{/registration}">-->
+<!--                <li>-->
+<!--                    <p>Roomer Register</p>-->
+<!--                </li>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--<img  width="100%" height="100%" th:src="@{images/register.jpg}"/>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .button {
+            border-radius: 4px;
+            background-color: #08bef6;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+            padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragment/resuable ::generic_css"></div>
+<div th:replace="fragment/resuable ::script"></div>
+<div th:replace="fragment/resuable ::font"></div>
+<div th:replace="fragment/resuable ::navbar_css"></div>
+<div th:replace="fragment/resuable ::navbar_css"></div>
+<div class="header">
+    <h3>Renter</h3>
+    <a th:href="@{/adminRegister}"><button class="button"><span>RenterRegister </span></button>
+    </a>
+</div>
+<div class="header">
+    <h3>Roomer</h3>
+    <a th:href="@{/registration}"><button class="button"><span>RoomerRegister </span></button>
+    </a>
+</div>
+
+</body>
+</html>

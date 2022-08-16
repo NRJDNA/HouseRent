@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add For Rent || page</title>
+  <style>
+    .tab {
+      margin-left: 400px;
+      color: #0010c9;
+    }
+
+    body {
+      color: darkturquoise;
+    }
+  </style>
+</head>
+<body style="background-color: #999999">
+<div th:replace="fragment/adminResuable ::generic_cs"></div>
+<div th:replace="fragment/adminResuable ::script"></div>
+<div th:replace="fragment/adminResuable ::fonts"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::usernavbar"></div>
+<div class="tab">
+  <div class="container my-5">
+    <h3><u><b>Add Room form</b></u></h3>
+    <p class="title" th:align="right" style="margin-right: 400px">
+      <a th:href="@{/}" class="btn btn-large btn-primary">back</a>
+    </p>
+    <div class="card" style="margin-right: 400px">
+      <div class="card-body">
+        <div class="col-md-10">
+          <form action="#" th:action="@{/userRoom/create}" th:method="post" th:object="${userRoomDto}">
+            <div class="row">
+              <input type="text" th:field="*{id}" hidden>
+              <div class="form-group col-md-6">
+                <label for="address" class="col-form-label">Address</label>
+                <input type="text" th:field="*{address}" class="form-control"
+                       id="address" placeholder="Enter the address"/>
+                <p class="display_msg" th:if="${#fields.hasErrors('address')}"
+                   th:errors="*{address}"></p>
+              </div>
+              <div class="form-group col-md-5">
+                <label class="text-dark">Select Room</label>
+                <select name="todo status" th:field="*{roomType}" class="form-select"
+                        aria-label="Default select example" required/>
+                <option value="">Select Room</option>
+                <th:block th:each="room : ${T(com.example.houserentingsystem.enums.RoomType).values()}">
+                  <option
+                          th:value="${room}"
+                          th:text="${room}">
+
+                  </option>
+                </th:block>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="date" class="col-form-label">Need date</label>
+                <input type="date" th:field="*{Date}" class="form-control"
+                       id="date" placeholder="Enter the Room need  date"/>
+              </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Your Description</label>
+                <textarea class="form-control" th:field="*{description}"
+                          id="exampleFormControlTextarea1" rows="3"
+                          placeholder="enter the description"></textarea>
+                <p class="display_msg" th:if="${#fields.hasErrors('description')}"
+                   th:errors="*{description}"></p>
+              </div>
+              <br>
+              <hr>
+              <div class="col-md-6">
+                <input type="submit" class="btn btn-primary" value=" Save ">
+                <input type="reset" class="btn btn-danger" value=" Reset ">
+              </div>
+            </div>
+          </form>
+          <h4 th:text="*{message}" style="color: #07e8e8"></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

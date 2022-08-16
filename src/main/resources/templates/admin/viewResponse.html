@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>complain || List</title>
+    <style>
+        .tab
+        {
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragment/adminResuable ::generic_cs"></div>
+<div th:replace="fragment/adminResuable ::script"></div>
+<div th:replace="fragment/adminResuable ::fonts"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::adminnavbar"></div>
+<div class="tab">
+    <table class="table table-hover">
+        <h2 style="font-size: 25px">UserRoom List</h2>
+        <thead class="table-dark">
+        <tr>
+            <th scope="col md-6">SN</th>
+            <th scope="col md-6">Name</th>
+            <th scope="col md-6">Address</th>
+            <th scope="col md-6">Room Type</th>
+<!--            <th scope="col md-6"> Date</th>-->
+            <th scope="col md-6">Room Need Date</th>
+            <th scope="col md-6">Status</th>
+            <th scope="col md-6" style="align-items: center">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="userRoom,loop :${userRoomList}">
+            <th th:text="${loop.count}"></th>
+            <td th:text="${userRoom.getRegister().name}"></td>
+            <td th:text="${userRoom.address}"></td>
+            <td th:text="${userRoom.roomType}"></td>
+<!--            <td th:text="${userRoom.roomNeedDate}"></td>-->
+            <td th:text="${userRoom.roomNeedDate}"></td>
+            <td th:text="${userRoom.userRoomStatus}"></td>
+            <td>
+                <a th:href="@{~/admin/approve/}+${userRoom.id}">
+                    <botton class="btn btn-info">APPROVE</botton>
+                </a>
+                <!--<form th:action="@{'/admin/updateStatus'+${userRoom.id}}" th:method="put" >
+                <input type="hidden" name="_method" value="put" />
+                <button type="submit" class="btn btn-primary" id="Approve" name="Approve">Approve</button>
+                </form>-->
+                <a th:href="@{~/admin/delete/}+${userRoom.id}">
+                    <botton class="btn btn-danger">Delete</botton>
+                </a>
+                <!--<a th:href="@{~/admin/details/}+${userRoom.id}">
+                    <botton class="btn btn-primary">User details</botton>
+                </a>-->
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

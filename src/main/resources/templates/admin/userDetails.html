@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View || User</title>
+    <style>
+        .tab
+        {
+            margin-right:300px;
+            margin-left: 300px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body style="background-color: #dddddd">
+<div th:replace="fragment/adminResuable ::generic_cs"></div>
+<div th:replace="fragment/adminResuable ::script"></div>
+<div th:replace="fragment/adminResuable ::fonts"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::adminnavbar"></div>
+<div class="tab">
+    <gh2>User Details</gh2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"> Name</th>
+            <th scope="col"> Data</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>User Name</td>
+            <td th:text="${registerView.name}"></td>
+        </tr>
+        <tr>
+            <td>User Address</td>
+            <td th:text="${adminRoomView.address}"></td>
+        </tr>
+        <tr>
+            <td>User Mobile Number</td>
+            <td th:text="${registerView.mobileNumber}"></td>
+        </tr>
+        <tr>
+            <td>User Photo</td>
+            <td th:text="${registerView.photo}"></td>
+        </tr>
+        <tr>
+            <td>User Email</td>
+            <td th:text="${registerView.email}"></td>
+        </tr>
+        <tr>
+            <td>User Date of Birth</td>
+            <td th:text="${registerView.dateOfBirth}"></td>
+        </tr>
+        <tr>
+            <td>User Gender</td>
+            <td th:text="${registerView.gender}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

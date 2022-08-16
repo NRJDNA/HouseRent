@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Give Room || List</title>
+  <style>
+    .tab {
+      margin-left: 200px;
+      margin-right: 200px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+<div th:replace="fragment/adminResuable ::generic_cs"></div>
+<div th:replace="fragment/adminResuable ::script"></div>
+<div th:replace="fragment/adminResuable ::fonts"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::adminnavbar"></div>
+<div class="tab">
+  <table class="table table-hover">
+    <h2>Room List</h2>
+    <thead class="table-dark">
+    <tr>
+      <th scope="col">SN</th>
+      <!--            <th scope="col">Name</th>-->
+      <th scope="col">Address</th>
+      <th scope="col">Room Type</th>
+      <th scope="col"> Date</th>
+      <th scope="col"> Price</th>
+      <!--            <th scope="col">Status</th>-->
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="adminRoom,loop :${adminRoomList}">
+      <th th:text="${loop.count}"></th>
+      <td th:text="${adminRoom.address}"></td>
+      <td th:text="${adminRoom.roomType}"></td>
+      <td th:text="${adminRoom.adminRoomDate}"></td>
+      <td th:text="${adminRoom.price}"></td>
+      <td th:text="${adminRoom.description}"></td>
+      <!--      <td th:text="${userRoom.userRoomDate}"></td>-->
+      <td>
+        <a th:href="@{~/adminRoom/view/}+${adminRoom.id}">
+          <botton class="btn btn-info">View</botton>
+        </a>
+        <a th:href="@{~/adminRoom/update/}+${adminRoom.id}">
+          <botton class="btn btn-primary">Request</botton>
+        </a>
+        <a th:href="@{~/adminRoom/delete/}+${adminRoom.id}">
+          <botton class="btn btn-danger">Reject</botton>
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
+

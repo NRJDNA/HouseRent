@@ -1,5 +1,6 @@
 package com.example.houserentingsystem.model.user.userRoom;
 
+import com.example.houserentingsystem.enums.RoomStatus;
 import com.example.houserentingsystem.enums.RoomType;
 import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
@@ -24,22 +25,26 @@ public class UserRoom {
     private String address;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "room_type", nullable = false)
+    @Column(name = "room_type")
     private RoomType roomType;
 
-//    @Column(name = "crime_date", nullable = false)
-//    private Date crimeDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "userRoomNeed_date")
     private Date userRoomDate;
 
+    @Column
+    private RoomStatus roomStatus;
+
     @Column(name = "description", nullable = false)
     private String description;
 
+    //images
+    private String filePath;
+
     @ManyToOne
     @JoinColumn(name = "register_id", referencedColumnName = "id",
-            foreignKey = @ForeignKey(name = "Fk_register_complaint"))
+            foreignKey = @ForeignKey(name = "Fk_register_userRoom"))
     private Register register;
 }
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HRS || HOME</title>
+    <style>
+        .vh-100 {
+            background-color: #f6f5f5;
+        }
+
+        .text {
+            font: message-box;
+            font-size: 60px;
+            margin-left: 550px;
+            color: #0b2bf5;
+        }
+
+        .text1 {
+            margin-left: 300px;
+            color: #0624d7;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="fragment/resuable ::generic_css"></div>
+<div th:replace="fragment/resuable ::script"></div>
+<div th:replace="fragment/resuable ::font"></div>
+<div th:replace="fragment/resuable ::navbar_css"></div>
+<div th:replace="fragment/resuable ::navbar_css"></div>
+<!--<div th:replace="fragment/resuable ::navbar"></div>-->
+<div class="vh-100">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="text">
+        <h1>WELCOME</h1>
+    </div>
+    <br>
+    <div class="text1">
+        <h2>House Renting System</h2>
+    </div>
+</div>
+</body>
+</html>

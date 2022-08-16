@@ -5,6 +5,7 @@ import com.example.houserentingsystem.enums.Gender;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Getter
@@ -28,12 +29,15 @@ public class AdminRegister {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @NotEmpty
     @Column(name = "email", nullable = false)
     private String email;
 
+    @NotEmpty
     @Column(name = "contact", nullable = false)
     private String contact;
 
+    @NotEmpty
     @Column(name = "id_number", nullable = false)
     private String idNumber;
 
@@ -41,8 +45,5 @@ public class AdminRegister {
     @Column(name = "gender", nullable = false)
     private Gender gender;
 
-
-//    @Column(name = "post", nullable = false)
-//    private String post;
 
 }

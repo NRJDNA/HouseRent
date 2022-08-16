@@ -11,4 +11,6 @@ public class AdminController {
     public String openLoginPage() {
         return "admin/adminRegisterPage";
     }
+
+
 }

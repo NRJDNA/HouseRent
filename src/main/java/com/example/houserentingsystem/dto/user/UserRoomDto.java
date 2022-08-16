@@ -1,7 +1,10 @@
 package com.example.houserentingsystem.dto.user;
 
+import com.example.houserentingsystem.enums.RoomStatus;
 import com.example.houserentingsystem.enums.RoomType;
+import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -18,12 +21,17 @@ public class UserRoomDto {
 
     @NotEmpty(message = "Address can not be empty!!")
     private String address;
-    @NotEmpty(message = "Type of Room can't be empty")
+//    @NotEmpty(message = "Type of Room can't be empty")
     private RoomType roomType;
 
     private String userRoomDate;
 
-    private Date complainDate;
+    private RoomStatus roomStatus;
+    private Register register;
+    private String filePath; //photos
+
+    private MultipartFile multipartFile;
+
 
     @NotEmpty(message = "Description can not be empty!!")
     private String description;
