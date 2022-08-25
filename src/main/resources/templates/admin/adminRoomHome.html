@@ -19,12 +19,22 @@
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::adminnavbar"></div>
 <div class="tab">
-    <table class="table table-hover">
+    <div>
+        <div class="input-group">
+            <div class="form-outline">
+                <input type="search" id="myInput" class="form-control" onkeyup="tableSearch()" />
+                <label class="form-label" for="myInput">Location Search</label>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover" id="myTable">
         <h2>Room List</h2>
         <thead class="table-dark">
         <tr>
             <th scope="col">SN</th>
             <!--            <th scope="col">Name</th>-->
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
             <th scope="col">Address</th>
             <th scope="col">Room Type</th>
             <th scope="col"> Date</th>
@@ -37,6 +47,8 @@
         <tbody>
         <tr th:each="adminRoom,loop :${adminRoomList}">
             <th th:text="${loop.count}"></th>
+            <td th:text="${adminRoom.name}"></td>
+            <td th:text="${adminRoom.contact}"></td>
             <td th:text="${adminRoom.address}"></td>
             <td th:text="${adminRoom.roomType}"></td>
             <td th:text="${adminRoom.adminRoomDate}"></td>
@@ -58,5 +70,28 @@
         </tbody>
     </table>
 </div>
+<script type="application/javascript">
+    function tableSearch(){
+        let input,filter,td,tr,table,i,textValue;
+        input=document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table=document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+
+        for(let i=0; i<tr.length;i++){
+            td=tr[i].getElementsByTagName("td")[2] ;   // 0 for name 1 for contact and so on...
+            if(td){
+                textValue=td.textContent || td.innerText;
+                if(textValue.toUpperCase().indexOf(filter)>-1){
+                    tr[i].style.display ="";
+                }
+                else{
+                    tr[i].style.display="none";
+                }
+
+            }
+        }
+    }
+</script>
 </body>
 </html>

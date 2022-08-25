@@ -32,8 +32,6 @@ public class UserRoomServiceImpl implements UserRoomService {
         this.userRoomRepo = userRoomRepo;
         this.registerRepo=registerRepo;
     }
-    @Autowired
-    public FileStoring fileStoring;
 
     @Override
     public UserRoomDto save(UserRoomDto userRoomDto) throws ParseException {
@@ -41,17 +39,20 @@ public class UserRoomServiceImpl implements UserRoomService {
 //        ImageDto imageDto = fileStoring.storeFile(userRoomDto.getMultipartFile());
 //        if (imageDto.isStatus()) {
             entity.setId(userRoomDto.getId());
+            entity.setName(userRoomDto.getName());
+            entity.setContact(userRoomDto.getContact());
             entity.setAddress(userRoomDto.getAddress());
             entity.setRoomType(userRoomDto.getRoomType());
             entity.setUserRoomDate(new SimpleDateFormat("dd-MM-yyyy").parse(userRoomDto.getUserRoomDate()));
 //            entity.setUserRoomDate(new Date());
+//        entity.getUserRoomDate(userRoomDto.getUserRoomDate());
             entity.setRoomStatus(userRoomDto.getRoomStatus());
             entity.setDescription(userRoomDto.getDescription());
             entity.setRegister(AuthorizeUser.getRegister());
 
 
             if (entity.getId() == null) {
-                entity.setRoomStatus(RoomStatus.PENDING);
+                entity.setRoomStatus(RoomStatus.AVAILABLE);
             } else {
                 entity.setRoomStatus(userRoomDto.getRoomStatus());
                 entity.setRegister(userRoomDto.getRegister());
@@ -68,6 +69,8 @@ public class UserRoomServiceImpl implements UserRoomService {
         for (UserRoom userRoom : userRoomList1) {
             userRoomList.add(UserRoomDto.builder()
                     .id(userRoom.getId())
+                    .name(userRoom.getName())
+                    .contact(userRoom.getContact())
                     .address(userRoom.getAddress())
                     .roomType(userRoom.getRoomType())
                     .userRoomDate(new SimpleDateFormat("yyyy-MM-dd").format(userRoom.getUserRoomDate()))
@@ -103,11 +106,13 @@ public class UserRoomServiceImpl implements UserRoomService {
                 userRoom=optionalUserRoom.get();
                 return   UserRoomDto.builder()
                         .id(userRoom.getId())
+                        .name(userRoom.getName())
+                        .contact(userRoom.getContact())
                         .address(userRoom.getAddress())
                         .roomType(userRoom.getRoomType())
 //                        .userRoomDate(userRoom.getUserRoomDate())
                         .userRoomDate(new SimpleDateFormat("yyyy-MM-dd").format(userRoom.getUserRoomDate()))
-//                        .userRoomStatus(userRoom.getUserRoomStatus())
+                        .roomStatus(userRoom.getRoomStatus())
 //                        .register(userRoom.getRegister())
                         .description(userRoom.getDescription())
                         .register(userRoom.getRegister())
@@ -141,11 +146,14 @@ public class UserRoomServiceImpl implements UserRoomService {
     public UserRoomDto updateUserRoom(UserRoomDto userRoomDto) throws ParseException {
         UserRoom entity=new UserRoom();
         entity.setId(userRoomDto.getId());
+        entity.setName(userRoomDto.getName());
+        entity.setContact(userRoomDto.getContact());
         entity.setAddress(userRoomDto.getAddress());
         entity.setRoomType(userRoomDto.getRoomType());
         entity.setUserRoomDate(new SimpleDateFormat("yyyy-MM-dd").parse(userRoomDto.getUserRoomDate()));
-        entity.setRegister(AuthorizeUser.getRegister());
+        entity.setRoomStatus(RoomStatus.AVAILABLE);
         entity.setDescription(userRoomDto.getDescription());
+        entity.setRegister(AuthorizeUser.getRegister());
         entity = userRoomRepo.save(entity);
         return userRoomDto;
     }
@@ -156,11 +164,14 @@ public class UserRoomServiceImpl implements UserRoomService {
         for(UserRoom userRoom : userRoomList1){
             userRoomList.add(UserRoomDto.builder()
                             .id(userRoom.getId())
+                            .name(userRoom.getName())
+                            .contact(userRoom.getContact())
                             .roomStatus(userRoom.getRoomStatus())
-                            .register(userRoom.getRegister())
                             .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
                             .description(userRoom.getDescription())
                             .address(userRoom.getAddress())
+                            .roomType(userRoom.getRoomType())
+                    .register(userRoom.getRegister())
                     .build());
         }
         return userRoomList;
@@ -170,6 +181,16 @@ public class UserRoomServiceImpl implements UserRoomService {
 
         return null;
 
+    }
+
+    public Integer getTotalRented(){
+        Integer totalRented=Integer.valueOf(userRoomRepo.getAvailableUserRoom());
+        return totalRented;
+    }
+
+    public Integer getTotalAvailable(){
+        Integer totalAvailable = Integer.valueOf(userRoomRepo.getAvailableUserRoom());
+        return totalAvailable;
     }
 
 

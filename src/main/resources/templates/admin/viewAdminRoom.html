@@ -30,6 +30,14 @@
         </thead>
         <tbody>
         <tr>
+            <td>Name</td>
+            <td th:text="${adminRoomView.name}"></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td th:text="${adminRoomView.contact}"></td>
+        </tr>
+        <tr>
             <td>Room Address</td>
             <td th:text="${adminRoomView.address}"></td>
         </tr>
@@ -45,13 +53,14 @@
         <!--            <td>Room Status</td>-->
         <!--            <td th:text="${userRoomView.roomStatus}"></td>-->
         <!--        </tr>-->
-        <tr>
-            <td>Room Description</td>
-            <td th:text="${adminRoomView.description}"></td>
-        </tr>
+
         <tr>
             <td>Room Price</td>
             <td th:text="${adminRoomView.price}"></td>
+        </tr>
+        <tr>
+            <td>Room Description</td>
+            <td th:text="${adminRoomView.description}"></td>
         </tr>
         </tbody>
     </table>

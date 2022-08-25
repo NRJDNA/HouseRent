@@ -21,6 +21,12 @@ public class UserRoom {
     @SequenceGenerator(name = "UserRoom_SEQ_GEN", sequenceName = "UserRoom_SEQ", allocationSize = 1)
     private Integer id;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name="contact")
+    private String contact;
+
     @Column(name = "address", nullable = false)
     private String address;
 

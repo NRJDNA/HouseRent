@@ -36,9 +36,9 @@ public class UserRegisterController {
             try {
                 //save the database
                 registerDto = registerService.save(registerDto);
-                model.addAttribute("message", "register successfully added");
+                model.addAttribute("message", "Roomer register successfully added");
             } catch (Exception e) {
-                model.addAttribute("message", "register failed added!!try again ?");
+                model.addAttribute("message", "Roomer register failed added!!try again ?");
                 e.printStackTrace();
             }
         }

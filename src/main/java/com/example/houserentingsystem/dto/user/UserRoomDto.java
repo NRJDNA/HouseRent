@@ -19,6 +19,11 @@ import java.util.Date;
 public class UserRoomDto {
     private Integer id;
 
+    @NotEmpty(message = "Name can not be empty !!")
+    private String name;
+
+    private String contact;
+
     @NotEmpty(message = "Address can not be empty!!")
     private String address;
 //    @NotEmpty(message = "Type of Room can't be empty")
@@ -28,6 +33,7 @@ public class UserRoomDto {
 
     private RoomStatus roomStatus;
     private Register register;
+
     private String filePath; //photos
 
     private MultipartFile multipartFile;

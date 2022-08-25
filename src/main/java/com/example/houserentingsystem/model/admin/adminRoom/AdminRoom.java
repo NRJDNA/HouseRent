@@ -7,6 +7,7 @@ import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -26,6 +27,11 @@ public class AdminRoom {
     @SequenceGenerator(name = "AdminRoom_SEQ_GEN", sequenceName = "AdminRoom_SEQ", allocationSize = 1)
     private Integer id;
 
+    @Column(name="name")
+    private String name;
+
+    @Column(name="contact")
+    private String contact;
     @Column(name = "address", nullable = false)
     private String address;
 
@@ -38,7 +44,7 @@ public class AdminRoom {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "adminRoom_date")
-    private Date userRoomDate;
+    private Date adminRoomDate;
 
     @Column(name="Price")
     private String price;

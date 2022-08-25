@@ -26,6 +26,8 @@
     <tr>
       <th scope="col">SN</th>
       <!--            <th scope="col">Name</th>-->
+      <th scope="col">Name</th>
+      <th scope="col">Contact</th>
       <th scope="col">Address</th>
       <th scope="col">Room Type</th>
       <th scope="col"> Date</th>
@@ -38,6 +40,8 @@
     <tbody>
     <tr th:each="userRoom,loop : ${userRoomList}">
       <th th:text="${loop.count}"></th>
+      <td th:text="${userRoom.name}"></td>
+      <td th:text="${userRoom.contact}"></td>
       <td th:text="${userRoom.address}"></td>
       <td th:text="${userRoom.roomType}"></td>
       <td th:text="${userRoom.userRoomDate}"></td>
@@ -69,7 +73,7 @@ table=document.getElementById("myTable");
 tr = table.getElementsByTagName("tr");
 
 for(let i=0; i<tr.length;i++){
-  td=tr[i].getElementsByTagName("td")[1] ;   // 0 for S.N 1 for Address 2 for type and so on...
+  td=tr[i].getElementsByTagName("td")[2] ;   // 0 for name 1 for contact and so on...
   if(td){
     textValue=td.textContent || td.innerText;
     if(textValue.toUpperCase().indexOf(filter)>-1){

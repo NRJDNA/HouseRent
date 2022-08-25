@@ -2,26 +2,28 @@ package com.example.houserentingsystem.controller.user.userRoom;
 
 
 import com.example.houserentingsystem.dto.user.UserRoomDto;
-import com.example.houserentingsystem.model.User;
+import com.example.houserentingsystem.service.impl.admin.AdminRoomServiceImpl;
 import com.example.houserentingsystem.service.impl.user.RegisterServiceImpl;
 import com.example.houserentingsystem.service.impl.user.UserRoomServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/userRoom")
 public class UserRoomController {
     private final UserRoomServiceImpl userRoomService;
     private final RegisterServiceImpl registerService;
+    private final AdminRoomServiceImpl adminRoomService;
 
-    public UserRoomController(UserRoomServiceImpl userRoomService, RegisterServiceImpl registerService) {
+    public UserRoomController(UserRoomServiceImpl userRoomService, RegisterServiceImpl registerService, AdminRoomServiceImpl adminRoomService) {
         this.userRoomService = userRoomService;
         this.registerService = registerService;
+        this.adminRoomService = adminRoomService;
     }
 
     @GetMapping("/home")
@@ -38,6 +40,12 @@ public class UserRoomController {
         return "user/userRoomPage";
     }
 
+    @GetMapping("/show")
+    public String showRoom(Model model) throws IOException{
+        model.addAttribute("adminRoomList",adminRoomService.findAllAdminRoom());
+        model.addAttribute("registerList",registerService.findAll());
+        return "user/adminRoomHome";
+    }
     @PostMapping("/create")
     public String createUserRoom(@Valid @ModelAttribute UserRoomDto userRoomDto,
                                  BindingResult bindingResult, Model model) {
@@ -80,12 +88,12 @@ public class UserRoomController {
             }
         }
         model.addAttribute("userRoomDto", userRoomDto);
-        return "user/userRoomUpdatePage";
+        return "redirect:/userRoom/home";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteUserRoom(@PathVariable("id") Integer id , Model model){
         userRoomService.deleteById(id);
-        return "redirect:/admin/show";
+        return "redirect:/userRoom/home";
     }
 }

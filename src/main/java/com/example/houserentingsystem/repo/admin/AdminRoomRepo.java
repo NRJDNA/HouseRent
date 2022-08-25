@@ -20,6 +20,12 @@ public interface AdminRoomRepo extends JpaRepository<AdminRoom , Integer> {
     @Query(value = "SELECT a FROM AdminRoom a WHERE CONCAT(a.address,a.price,a.roomType) LIKE %?1% ")
     List<AdminRoom> search(String keyword);
 
+    @Query(value = "select count(ur.user_room_status)from user_user_room ur where ur.user_room_status= 0",nativeQuery = true)
+    String getAvailableUserRoom();
+
+    @Query(value = "select count(ur.user_room_status)from user_user_room ur where ur.user_room_status=1",nativeQuery = true)
+    String getRentedUserRoom();
+
 //    @Query("SELECT p FROM Product p WHERE CONCAT(p.name, p.brand, p.madein, p.price) LIKE %?1%")
 //public List<Product> search(String keyword);
 }

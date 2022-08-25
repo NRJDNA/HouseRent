@@ -10,6 +10,7 @@ import lombok.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -18,21 +19,25 @@ import javax.validation.constraints.NotEmpty;
 @Valid
 public class AdminRoomDto {
     private Integer id;
+    @NotEmpty(message = "Name Cannot be Empty")
+    private String name;
 
-    @NotEmpty(message = "Address can not be empty!!")
+    private String contact;
+
+    @NotEmpty(message = "Address Cannot be empty!!")
     private String address;
 //    @NotEmpty(message = "Type of Room can't be empty")
     private RoomType roomType;
 
     private String adminRoomDate;
+//    private LocalDate localDate;
+
 
     private RoomStatus roomStatus;
 
-//    private java.util.Date Date;
-
     @NotEmpty()
     private String price;
-    @NotEmpty(message = "Description can not be empty!!")
+    @NotEmpty(message = "Description Cannot be empty!!")
     private String description;
 
     private AdminRegister adminRegister;

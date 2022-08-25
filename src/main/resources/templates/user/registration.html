@@ -11,7 +11,7 @@
 <div th:replace="fragment/resuable ::font"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
-<div th:replace="fragment/resuable ::navbar"></div>
+<!--<div th:replace="fragment/resuable ::navbar"></div>-->
 <section class="vh-100 bg-image" >
   <div class="mask d-flex align-items-center h-100 gradient-custom-3">
     <div class="container h-100">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="form-outline mb-4">
                   <input type="number" id="form3Example3cgg" placeholder="Mobile number *"
-                         class="form-control form-control-lg" th:field="*{mobileNumber}"/>
+                         class="form-control form-control-lg" th:field="*{mobileNumber}" required/>
                   <label class="form-label" for="form3Example3cg">Your number</label>
                 </div>
                 <div class="form-outline mb-4">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="form-outline mb-4">
                   <input type="password" id="form3Example4cg" placeholder="Password *"
-                         class="form-control form-control-lg" th:field="*{password}"/>
+                         class="form-control form-control-lg" th:field="*{password}" required/>
                   <label class="form-label" for="form3Example4cg">Password</label>
                 </div>
                 <div class="col-md-6">
@@ -68,7 +68,7 @@
                         th:href="@{/login}"
                         class="fw-bold text-body"><u>Login here</u></a></p>
               </form>
-              <h4 th:text="*{message}">Registration Successful</h4>
+              <h4 th:text="*{message}" style="color: red">Renter Registration Successful</h4>
             </div>
           </div>
         </div>
