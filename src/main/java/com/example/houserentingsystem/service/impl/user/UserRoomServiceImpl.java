@@ -6,19 +6,16 @@ import com.example.houserentingsystem.component.authorizeUser.AuthorizeUser;
 import com.example.houserentingsystem.dto.ImageDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
 import com.example.houserentingsystem.enums.RoomStatus;
-import com.example.houserentingsystem.model.User;
 import com.example.houserentingsystem.model.user.userRoom.UserRoom;
-import com.example.houserentingsystem.repo.UserRepo;
 import com.example.houserentingsystem.repo.user.RegisterRepo;
 import com.example.houserentingsystem.repo.user.UserRoomRepo;
 import com.example.houserentingsystem.service.user.UserRoomService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,17 +23,19 @@ import java.util.Optional;
 public class UserRoomServiceImpl implements UserRoomService {
     private final UserRoomRepo userRoomRepo;
     private final RegisterRepo registerRepo;
+    private final FileStoring fileStoring;
 
 
-    public UserRoomServiceImpl(UserRoomRepo userRoomRepo,RegisterRepo registerRepo) {
+    public UserRoomServiceImpl(UserRoomRepo userRoomRepo, RegisterRepo registerRepo, FileStoring fileStoring) {
         this.userRoomRepo = userRoomRepo;
         this.registerRepo=registerRepo;
+        this.fileStoring = fileStoring;
     }
 
     @Override
-    public UserRoomDto save(UserRoomDto userRoomDto) throws ParseException {
+    public UserRoomDto save(UserRoomDto userRoomDto) throws ParseException, IOException {
         UserRoom entity = new UserRoom();
-//        ImageDto imageDto = fileStoring.storeFile(userRoomDto.getMultipartFile());
+        ImageDto imageDto=fileStoring.storeFile(userRoomDto.getMultipartFile());
 //        if (imageDto.isStatus()) {
             entity.setId(userRoomDto.getId());
             entity.setName(userRoomDto.getName());
@@ -46,6 +45,7 @@ public class UserRoomServiceImpl implements UserRoomService {
             entity.setUserRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(userRoomDto.getUserRoomDate()));
 //            entity.setUserRoomDate(new Date());
 //        entity.getUserRoomDate(userRoomDto.getUserRoomDate());
+        entity.setFilePath(imageDto.getMessage());
             entity.setRoomStatus(userRoomDto.getRoomStatus());
             entity.setDescription(userRoomDto.getDescription());
             entity.setRegister(AuthorizeUser.getRegister());
@@ -57,12 +57,12 @@ public class UserRoomServiceImpl implements UserRoomService {
                 entity.setRoomStatus(userRoomDto.getRoomStatus());
                 entity.setRegister(userRoomDto.getRegister());
             }
-            entity = userRoomRepo.save(entity);
+            userRoomRepo.save(entity);
 
             return userRoomDto;
     }
     @Override
-    public List<UserRoomDto> findAll() {
+    public List<UserRoomDto> findAll() throws IOException {
         List<UserRoomDto> userRoomList = new ArrayList<>();
         List<UserRoom> userRoomList1 = userRoomRepo.getUserRoomList(AuthorizeUser.getRegister().getId());
 //        List<UserRoom> userRoomList2 = userRoomRepo.getUserRoomList(AuthorizeUser.getRegister().getId());
@@ -76,6 +76,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                     .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
                     .roomStatus(userRoom.getRoomStatus())
 //                    .userRoomDate(userRoom.getUserRoomDate())
+                    .filePath(fileStoring.returnFileAsBase64(userRoom.getFilePath()))
                     .description(userRoom.getDescription())
                     .register(userRoom.getRegister())
 //                    .register(userRoom.getRegister())
@@ -98,7 +99,7 @@ public class UserRoomServiceImpl implements UserRoomService {
     }
 
         @Override
-    public UserRoomDto findById(Integer integer) {
+    public UserRoomDto findById(Integer integer) throws IOException {
             UserRoom userRoom;
             Optional<UserRoom> optionalUserRoom=userRoomRepo.findById(integer);
             if (optionalUserRoom.isPresent())
@@ -114,6 +115,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                         .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
                         .roomStatus(userRoom.getRoomStatus())
 //                        .register(userRoom.getRegister())
+                        .filePath(fileStoring.returnFileAsBase64(userRoom.getFilePath()))
                         .description(userRoom.getDescription())
                         .register(userRoom.getRegister())
                         .build();
@@ -152,6 +154,7 @@ public class UserRoomServiceImpl implements UserRoomService {
         entity.setRoomType(userRoomDto.getRoomType());
         entity.setUserRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(userRoomDto.getUserRoomDate()));
         entity.setRoomStatus(RoomStatus.AVAILABLE);
+        entity.setFilePath(userRoomDto.getFilePath());
         entity.setDescription(userRoomDto.getDescription());
         entity.setRegister(AuthorizeUser.getRegister());
         entity = userRoomRepo.save(entity);

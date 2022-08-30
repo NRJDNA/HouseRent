@@ -27,7 +27,7 @@ public class UserRoomController {
     }
 
     @GetMapping("/home")
-    public String openShowRoom(Model model) {
+    public String openShowRoom(Model model) throws IOException {
         model.addAttribute("userRoomDto", new UserRoomDto());
         model.addAttribute("userRoomList", userRoomService.findAll());
 //        model.addAttribute("userName",registerService.findAll());
@@ -62,8 +62,7 @@ public class UserRoomController {
         return "user/userRoomPage";
     }
     @GetMapping("/view/{id}")
-    public String viewUserRoom(@PathVariable("id")Integer id, Model model)
-    {
+    public String viewUserRoom(@PathVariable("id")Integer id, Model model) throws IOException {
         model.addAttribute("userRoomView",userRoomService.findById(id));
         return "user/viewUserRoom";
     }
@@ -75,8 +74,7 @@ public class UserRoomController {
     }
 
     @GetMapping("/update/{id}")
-    public String updateUserRoom(@PathVariable ("id") Integer id,Model model)
-    {
+    public String updateUserRoom(@PathVariable ("id") Integer id,Model model) throws IOException {
         UserRoomDto userRoomDto=userRoomService.findById(id);
         model.addAttribute("userRoomDto",userRoomDto);
         return "user/userRoomUpdatePage";

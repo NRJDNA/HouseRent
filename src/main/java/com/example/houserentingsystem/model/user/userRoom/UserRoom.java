@@ -46,6 +46,7 @@ public class UserRoom {
     private String description;
 
     //images
+    @Column
     private String filePath;
 
     @ManyToOne

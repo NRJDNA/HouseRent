@@ -21,7 +21,7 @@ import java.util.UUID;
 @Component
 public class FileStoring {
     public static ImageDto storeFile(MultipartFile multipartFile) throws IOException{
-            String directoryPath = System.getProperty("user.home")+ File.separator + "Desktop" + File.separator + "HouseRentingPhoto";
+            String directoryPath = System.getProperty("user.home")+ File.separator + "Desktop" + File.separator + "HouseRentingPhotos";
             File directoryFile = new File(directoryPath);
             if(!directoryFile.exists()){
                 directoryFile.mkdirs();

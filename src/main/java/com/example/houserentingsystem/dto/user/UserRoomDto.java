@@ -34,7 +34,7 @@ public class UserRoomDto {
     private RoomStatus roomStatus;
     private Register register;
 
-    private String filePath; //photos
+    private String filePath;
 
     private MultipartFile multipartFile;
 

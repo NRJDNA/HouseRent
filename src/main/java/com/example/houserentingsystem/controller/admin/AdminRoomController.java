@@ -69,14 +69,14 @@ public class AdminRoomController {
     }
 
     @GetMapping("/rented/{id}")
-    public String verifyRoom(@PathVariable("id") Integer id) throws ParseException {
+    public String verifyRoom(@PathVariable("id") Integer id) throws ParseException, IOException {
         UserRoomDto userRoomDto=userRoomService.findById(id);
         userRoomDto.setRoomStatus(RoomStatus.RENTED);
         userRoomService.save(userRoomDto);
         return "redirect:/adminRoom/show";
     }
     @GetMapping("/unrented/{id}")
-    public String unverifyRoom(@PathVariable("id") Integer id) throws ParseException {
+    public String unverifyRoom(@PathVariable("id") Integer id) throws ParseException, IOException {
         UserRoomDto userRoomDto=userRoomService.findById(id);
         userRoomDto.setRoomStatus(RoomStatus.AVAILABLE);
         userRoomService.save(userRoomDto);
@@ -110,7 +110,7 @@ public class AdminRoomController {
         return "admin/viewAdminRoom";
     }
     @GetMapping("/uview/{id}")
-    public String viewUserRoom(@PathVariable("id") Integer id, Model model){
+    public String viewUserRoom(@PathVariable("id") Integer id, Model model) throws IOException {
         model.addAttribute("userRoomView",userRoomService.findById(id));
         return "admin/viewUserRoom";
     }
