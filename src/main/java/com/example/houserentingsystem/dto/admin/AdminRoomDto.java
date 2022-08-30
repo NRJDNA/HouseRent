@@ -6,22 +6,25 @@ import com.example.houserentingsystem.enums.RoomType;
 import com.example.houserentingsystem.model.admin.AdminRegister;
 import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
 
 
 @Getter
 @Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Valid
 public class AdminRoomDto {
     private Integer id;
     @NotEmpty(message = "Name Cannot be Empty")
     private String name;
 
+    private String email;
     private String contact;
 
     @NotEmpty(message = "Address Cannot be empty!!")
@@ -32,6 +35,10 @@ public class AdminRoomDto {
     private String adminRoomDate;
 //    private LocalDate localDate;
 
+    private String filePath;
+
+
+    private MultipartFile multipartFile;
 
     private RoomStatus roomStatus;
 

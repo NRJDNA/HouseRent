@@ -5,6 +5,7 @@ import com.example.houserentingsystem.enums.RoomType;
 import com.example.houserentingsystem.model.admin.AdminRegister;
 import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
+import org.apache.commons.mail.Email;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -42,10 +43,15 @@ public class AdminRoom {
     @Column
     private RoomStatus roomStatus;
 
+    @Column
+    private String  email;
+
+    @Column
+    private String filePath;
+
     @Temporal(TemporalType.DATE)
     @Column(name = "adminRoom_date")
     private Date adminRoomDate;
-
     @Column(name="Price")
     private String price;
 

@@ -1,15 +1,12 @@
 package com.example.houserentingsystem.controller.admin;
 
+//import com.example.houserentingsystem.component.SendEmailComponents;
 import com.example.houserentingsystem.dto.admin.AdminRoomDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
 import com.example.houserentingsystem.enums.RoomStatus;
-import com.example.houserentingsystem.model.User;
-import com.example.houserentingsystem.model.admin.adminRoom.AdminRoom;
 import com.example.houserentingsystem.service.impl.admin.AdminRoomServiceImpl;
 import com.example.houserentingsystem.service.impl.user.RegisterServiceImpl;
 import com.example.houserentingsystem.service.impl.user.UserRoomServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.List;
 
 @Controller
 @RequestMapping("/adminRoom")
@@ -35,11 +31,23 @@ public class AdminRoomController {
     }
 
     @GetMapping("/home")
-    public String openHome(Model model){
+    public String openHome(Model model) throws IOException {
                model.addAttribute("adminRoomDto",new AdminRoomDto());
         model.addAttribute("adminRoomList",adminRoomService.findAll());
 
         return "admin/adminRoomHome";
+    }
+    @GetMapping("/homes")
+    public String openHomes(Model model) throws IOException {
+        model.addAttribute("adminRoomDto",new AdminRoomDto());
+        model.addAttribute("adminRoomList",adminRoomService.findAll());
+
+        return "admin/adminRoomHomes";
+    }
+
+    @GetMapping("/about")
+    public String openAbout(Model model){
+        return "admin/about";
     }
 //    @GetMapping("/home")
 //    public String openShowRoom(Model model) {
@@ -67,6 +75,13 @@ public class AdminRoomController {
         userRoomService.save(userRoomDto);
         return "redirect:/adminRoom/show";
     }
+    @GetMapping("/unrented/{id}")
+    public String unverifyRoom(@PathVariable("id") Integer id) throws ParseException {
+        UserRoomDto userRoomDto=userRoomService.findById(id);
+        userRoomDto.setRoomStatus(RoomStatus.AVAILABLE);
+        userRoomService.save(userRoomDto);
+        return "redirect:/adminRoom/show";
+    }
 //    @GetMapping("/available/{id}")
 //    public String rentRoom(@PathVariable("id") Integer id) throws IOException{
 //        UserRoomDto userRoomDto = userRoomService.findById(id);
@@ -90,8 +105,7 @@ public class AdminRoomController {
         return "redirect:/adminRoom/home";
     }
     @GetMapping("/view/{id}")
-    public String viewAdminRoom(@PathVariable("id") Integer id,Model model)
-    {
+    public String viewAdminRoom(@PathVariable("id") Integer id,Model model) throws IOException {
         model.addAttribute("adminRoomView",adminRoomService.findById(id));
         return "admin/viewAdminRoom";
     }
@@ -101,7 +115,7 @@ public class AdminRoomController {
         return "admin/viewUserRoom";
     }
     @GetMapping("/update/{id}")
-    public String updateAdminRoom(@PathVariable ("id") Integer id, Model model, RedirectAttributes redirectAttributes){
+    public String updateAdminRoom(@PathVariable ("id") Integer id, Model model, RedirectAttributes redirectAttributes) throws IOException {
         AdminRoomDto adminRoomDto = adminRoomService.findById(id);
         model.addAttribute("adminRoomDto",adminRoomDto);
         return "admin/adminRoomUpdatePage";

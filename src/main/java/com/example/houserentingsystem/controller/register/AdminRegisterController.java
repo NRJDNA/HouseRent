@@ -1,6 +1,7 @@
 package com.example.houserentingsystem.controller.register;
 
 
+import com.example.houserentingsystem.component.SendEmailComponents;
 import com.example.houserentingsystem.dto.admin.AdminRegisterDto;
 import com.example.houserentingsystem.service.impl.admin.AdminRegisterServiceImpl;
 import org.springframework.stereotype.Controller;

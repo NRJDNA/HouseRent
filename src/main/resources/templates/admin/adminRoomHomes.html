@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room || DETAILS</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .basic-charge{
+      color: #3ac162;
+    }
+  /*  Styles start here*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .main-container {
+      padding: 30px;
+    }
+
+    /* HEADING */
+
+    .heading {
+      text-align: center;
+    }
+
+    .heading__title {
+      font-weight: 600;
+    }
+
+    .heading__credits {
+      margin: 10px 0px;
+      color: #888888;
+      font-size: 25px;
+      transition: all 0.5s;
+    }
+
+    .heading__link {
+      text-decoration: none;
+    }
+
+    .heading__credits .heading__link {
+      color: inherit;
+    }
+
+    /* CARDS */
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .card {
+      margin: 20px;
+      padding: 20px;
+      width: 500px;
+      min-height: 200px;
+      display: grid;
+      grid-template-rows: 20px 50px 1fr 50px;
+      border-radius: 10px;
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+      transform: scale(1.01);
+    }
+
+    .card__link,
+    .card__exit,
+    .card__icon {
+      position: relative;
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .card__link::after {
+      position: absolute;
+      top: 25px;
+      left: 0;
+      content: "";
+      width: 0%;
+      height: 3px;
+      background-color: rgba(255, 255, 255, 0.6);
+      transition: all 0.5s;
+    }
+
+    .card__link:hover::after {
+      width: 100%;
+    }
+
+    .card__exit {
+      grid-row: 1/2;
+      justify-self: end;
+    }
+
+    .card__icon {
+      grid-row: 2/3;
+      font-size: 30px;
+    }
+
+    .card__title {
+      grid-row: 3/4;
+      font-weight: 400;
+      color: #ffffff;
+    }
+
+    .card__apply {
+      grid-row: 4/5;
+      align-self: center;
+    }
+
+    /* CARD BACKGROUNDS */
+
+    .card-3 {
+      background: radial-gradient(#76b2fe, #b69efe);
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 1600px) {
+      .cards {
+        justify-content: center;
+      }
+    }
+
+
+  </style>
+</head>
+<body>
+<div th:replace="fragment/adminResuable ::generic_cs"></div>
+<div th:replace="fragment/adminResuable ::script"></div>
+<div th:replace="fragment/adminResuable ::fonts"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::navbar_css"></div>
+<div th:replace="fragment/adminResuable ::adminnavbar"></div>
+
+<!--Heading -->
+
+<div class="main-container">
+  <div class="heading">
+    <h1 class="heading__title">Room Lists</h1>
+  </div>
+
+<!--  Cards start from here-->
+  <div class="card card-3" th:each="adminRoom,loop :${adminRoomList}" style="col m">
+    <div class="card__icon"><i class="fas fa-bolt"></i></div>
+    <p class="card__exit"><i class="fas fa-times"></i></p>
+  Name:  <h2 class="card__title" th:text="${adminRoom.name}">Name: </h2><br>
+    <h2 class="card__title" th:text="${adminRoom.contact}">Contact: </h2><br>
+    <h2 class="card__title" th:text="${adminRoom.address}">Address: </h2><br>
+    <h2 class="card__title" th:text="${adminRoom.roomType}">RoomType: </h2><br>
+    <h2 class="card__title" th:text="${adminRoom.adminRoomDate}">Date: </h2><br>
+    <h2 class="card__title" th:text="${adminRoom.price}">Price: </h2><br>
+    <h2 class="card__title" th:text="${adminRoom.description}">Description: </h2><br>
+    <p class="card__apply">
+      <a class="card__link" th:href="@{~/adminRoom/view/}+${adminRoom.id}"> View <i class="fas fa-arrow-right"></i></a><br>
+      <a class="card__link" th:href="@{~/adminRoom/update/}+${adminRoom.id}"> Update <i class="fas fa-arrow-right"></i></a><br>
+      <a class="card__link" th:href="@{~/adminRoom/delete/}+${adminRoom.id}"> Delete <i class="fas fa-arrow-right"></i></a><br>
+    </p>
+  </div>
+</div>
+</body>
+</html>

@@ -67,6 +67,13 @@ public class UserRoomController {
         model.addAttribute("userRoomView",userRoomService.findById(id));
         return "user/viewUserRoom";
     }
+
+    @GetMapping("/aview/{id}")
+    public String viewAdminRoom(@PathVariable("id") Integer id , Model model) throws IOException {
+        model.addAttribute("adminRoomView",adminRoomService.findById(id));
+        return "user/viewAdminRoom";
+    }
+
     @GetMapping("/update/{id}")
     public String updateUserRoom(@PathVariable ("id") Integer id,Model model)
     {

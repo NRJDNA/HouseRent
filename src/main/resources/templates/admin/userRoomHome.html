@@ -53,8 +53,11 @@
         <a th:href="@{~/adminRoom/uview/}+${userRoom.id}">
           <botton class="btn btn-info">View</botton>
         </a>
-        <a th:href="@{~/userRoom/rented/}+${userRoom.id}">
+        <a th:href="@{~/adminRoom/rented/}+${userRoom.id}">
           <botton class="btn btn-primary">Accept</botton>
+        </a>
+        <a th:href="@{~/adminRoom/unrented/}+${userRoom.id}">
+          <botton class="btn btn-primary">Not Accept</botton>
         </a>
 <!--        <a th:href="@{~/userRoom/delete/}+${userRoom.id}">-->
           <botton class="btn btn-danger">Remove</botton>

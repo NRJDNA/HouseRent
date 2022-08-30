@@ -1,4 +1,5 @@
 package com.example.houserentingsystem.service.impl.admin;
+import com.example.houserentingsystem.component.SendEmailComponents;
 import com.example.houserentingsystem.dto.admin.AdminRegisterDto;
 import com.example.houserentingsystem.enums.UserStatus;
 import com.example.houserentingsystem.model.User;
@@ -6,6 +7,7 @@ import com.example.houserentingsystem.model.admin.AdminRegister;
 import com.example.houserentingsystem.repo.admin.AdminRegisterRepo;
 import com.example.houserentingsystem.service.admin.AdminRegisterService;
 import com.example.houserentingsystem.service.impl.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ public class AdminRegisterServiceImpl implements AdminRegisterService {
     private final AdminRegisterRepo adminRegisterRepo;
     private final UserServiceImpl userService;
     private final BCryptPasswordEncoder passwordEncoder;
+    @Autowired
+    private SendEmailComponents sendEmailComponents;
 
     public AdminRegisterServiceImpl(AdminRegisterRepo adminRegisterRepo, UserServiceImpl userService, BCryptPasswordEncoder passwordEncoder) {
         this.adminRegisterRepo = adminRegisterRepo;
@@ -32,14 +36,15 @@ public class AdminRegisterServiceImpl implements AdminRegisterService {
         adminRegister.setAddress(adminRegisterDto.getAddress());
         adminRegister.setGender(adminRegisterDto.getGender());
         adminRegister.setEmail(adminRegisterDto.getEmail());
+//        sendEmailComponents.sendEmail(adminRegisterDto.getEmail(),adminRegisterDto.getName(),false);
         adminRegister.setContact(adminRegisterDto.getContact());
-//        adminRegister.setPost(adminRegisterDto.getPost());
         adminRegister.setIdNumber(adminRegisterDto.getCitizenshipNo());
 
         AdminRegister adminRegister1 = adminRegisterRepo.save(adminRegister);
 
         User user = new User();
         user.setEmail(adminRegisterDto.getEmail());
+//        sendEmailComponents.sendEmail(adminRegisterDto.getEmail(),adminRegisterDto.getName(),false);
         user.setPassword(passwordEncoder.encode(adminRegisterDto.getPassword()));
         user.setUserStatus(UserStatus.ADMIN);
         userService.save(user);

@@ -30,7 +30,7 @@
         <div class="card" style="margin-right: 400px">
             <div class="card-body">
                 <div class="col-md-10">
-                    <form action="#" th:action="@{/adminRoom/create}" th:method="post" th:object="${adminRoomDto}">
+                    <form action="#" th:action="@{/adminRoom/create}" th:method="post" th:object="${adminRoomDto}" enctype="multipart/form-data">
                         <div class="row">
                             <input type="text" th:field="*{id}" hidden>
                             <div class="form-group col-md-6">
@@ -53,6 +53,13 @@
                                        id="address" placeholder="Enter the address"/>
                                 <p class="display_msg" th:if="${#fields.hasErrors('address')}"
                                    th:errors="*{address}"></p>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="address" class="col-form-label">Email</label>
+                                <input type="email" th:field="*{email}" class="form-control"
+                                       id="email" placeholder="Enter the email"/>
+                                <p class="display_msg" th:if="${#fields.hasErrors('email')}"
+                                   th:errors="*{email}"></p>
                             </div>
                             <div class="form-group col-md-5">
                                 <label class="text-dark">Select Room</label>
@@ -86,6 +93,11 @@
                                 <p class="display_msg" th:if="${#fields.hasErrors('description')}"
                                    th:errors="*{description}"></p>
                             </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Select Image</label>
+                                <input type="file" th:field="*{multipartFile}" class="form-control"
+                                       id="image" placeholder="Enter " required/>
+                            </div>
                             <br>
                             <hr>
                             <div class="col-md-6">
@@ -94,7 +106,7 @@
                             </div>
                         </div>
                     </form>
-                    <h4 th:text="*{message}" style="color: #e80707">Admin Room Successfully Added </h4>
+                    <h4 th:text="*{messages}" style="color: #e80707">Admin Room Successfully Added </h4>
                 </div>
             </div>
         </div>

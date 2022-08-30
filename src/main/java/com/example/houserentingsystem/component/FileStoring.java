@@ -20,7 +20,7 @@ import java.util.UUID;
 @Slf4j
 @Component
 public class FileStoring {
-    public ImageDto storeFile(MultipartFile multipartFile) throws IOException{
+    public static ImageDto storeFile(MultipartFile multipartFile) throws IOException{
             String directoryPath = System.getProperty("user.home")+ File.separator + "Desktop" + File.separator + "HouseRentingPhoto";
             File directoryFile = new File(directoryPath);
             if(!directoryFile.exists()){
@@ -50,8 +50,7 @@ public class FileStoring {
     public String returnFileAsBase64(String filePath) throws IOException{
         File file = new File(filePath);
         byte[] bytes = Files.readAllBytes(file.toPath());
-        String base64EncodedImage = ("date:image/png;base64, " + Base64.getEncoder().encodeToString(bytes));
-        return base64EncodedImage;
+        return "data:image/png;base64," + Base64.getEncoder().encodeToString(bytes);
 
     }
 }

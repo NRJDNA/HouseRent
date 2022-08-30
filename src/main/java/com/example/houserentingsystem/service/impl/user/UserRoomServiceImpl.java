@@ -43,7 +43,7 @@ public class UserRoomServiceImpl implements UserRoomService {
             entity.setContact(userRoomDto.getContact());
             entity.setAddress(userRoomDto.getAddress());
             entity.setRoomType(userRoomDto.getRoomType());
-            entity.setUserRoomDate(new SimpleDateFormat("dd-MM-yyyy").parse(userRoomDto.getUserRoomDate()));
+            entity.setUserRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(userRoomDto.getUserRoomDate()));
 //            entity.setUserRoomDate(new Date());
 //        entity.getUserRoomDate(userRoomDto.getUserRoomDate());
             entity.setRoomStatus(userRoomDto.getRoomStatus());
@@ -73,7 +73,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                     .contact(userRoom.getContact())
                     .address(userRoom.getAddress())
                     .roomType(userRoom.getRoomType())
-                    .userRoomDate(new SimpleDateFormat("yyyy-MM-dd").format(userRoom.getUserRoomDate()))
+                    .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
                     .roomStatus(userRoom.getRoomStatus())
 //                    .userRoomDate(userRoom.getUserRoomDate())
                     .description(userRoom.getDescription())
@@ -111,7 +111,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                         .address(userRoom.getAddress())
                         .roomType(userRoom.getRoomType())
 //                        .userRoomDate(userRoom.getUserRoomDate())
-                        .userRoomDate(new SimpleDateFormat("yyyy-MM-dd").format(userRoom.getUserRoomDate()))
+                        .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
                         .roomStatus(userRoom.getRoomStatus())
 //                        .register(userRoom.getRegister())
                         .description(userRoom.getDescription())
@@ -150,7 +150,7 @@ public class UserRoomServiceImpl implements UserRoomService {
         entity.setContact(userRoomDto.getContact());
         entity.setAddress(userRoomDto.getAddress());
         entity.setRoomType(userRoomDto.getRoomType());
-        entity.setUserRoomDate(new SimpleDateFormat("yyyy-MM-dd").parse(userRoomDto.getUserRoomDate()));
+        entity.setUserRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(userRoomDto.getUserRoomDate()));
         entity.setRoomStatus(RoomStatus.AVAILABLE);
         entity.setDescription(userRoomDto.getDescription());
         entity.setRegister(AuthorizeUser.getRegister());

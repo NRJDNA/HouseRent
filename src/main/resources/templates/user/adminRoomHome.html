@@ -35,6 +35,7 @@
       <th scope="col"> Price</th>
       <!--            <th scope="col">Status</th>-->
       <th scope="col">Description</th>
+      <th scope="col">Status</th>
       <th scope="col">Action</th>
     </tr>
     </thead>
@@ -48,9 +49,10 @@
       <td th:text="${adminRoom.adminRoomDate}"></td>
       <td th:text="${adminRoom.price}"></td>
       <td th:text="${adminRoom.description}"></td>
+      <td th:text="${adminRoom.roomStatus}"></td>
       <!--      <td th:text="${userRoom.userRoomDate}"></td>-->
       <td>
-        <a th:href="@{~/adminRoom/view/}+${adminRoom.id}">
+        <a th:href="@{~/userRoom/aview/}+${adminRoom.id}">
           <botton class="btn btn-info">View</botton>
         </a>
 <!--        <a th:href="@{~/adminRoom/update/}+${adminRoom.id}">-->
@@ -58,7 +60,7 @@
 <!--        </a>-->
 
 <!--        <a th:href="@{~/adminRoom/delete/}+${adminRoom.id}">-->
-          <botton class="btn btn-danger">Remove</botton>
+      <a>    <botton class="btn btn-danger">Remove</botton>
         </a>
       </td>
     </tr>

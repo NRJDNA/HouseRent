@@ -47,6 +47,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/userLandingPage",
                         "/home",
                         "/registerPage",
+                        "/css/registrationUser.css",
+                        "/css/cards.scss",
                         "/css",
                         "/admin/adminRegisterPage",
                         "/userRoom**",
