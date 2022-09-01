@@ -40,7 +40,6 @@ public class UserRegisterController {
                 sendEmailComponents.sendEmail(registerDto.getEmail(),"Registration",
                         "Hello Mr/Mrs. "+registerDto.getName()+"\n As a Roomer Register Successfully"
                         );
-                registerDto=registerService.save(registerDto);
                 //save the database
                 registerDto = registerService.save(registerDto);
                 model.addAttribute("message", "Roomer register successfully added");

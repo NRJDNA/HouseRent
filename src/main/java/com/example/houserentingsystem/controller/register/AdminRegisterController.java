@@ -40,7 +40,6 @@ public class AdminRegisterController {
                         "Registration",
                         "Hello Mr/Mrs. "+adminRegisterDto.getName()+"\n As a Renter Register SuccessFull");
                 adminRegisterDto = adminRegisterService.save(adminRegisterDto);
-                adminRegisterDto = adminRegisterService.save(adminRegisterDto);
                 model.addAttribute("message", "Admin register successfully added!");
             } catch (Exception e) {
                 model.addAttribute("message", "Admin register failed added!!");
