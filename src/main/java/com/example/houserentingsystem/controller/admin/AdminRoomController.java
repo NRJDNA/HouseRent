@@ -102,7 +102,7 @@ public class AdminRoomController {
             }
         }
         model.addAttribute("adminRoomDto",adminRoomDto);
-        return "redirect:/adminRoom/home";
+        return "admin/adminRoomPage";
     }
     @GetMapping("/view/{id}")
     public String viewAdminRoom(@PathVariable("id") Integer id,Model model) throws IOException {
@@ -132,7 +132,7 @@ public class AdminRoomController {
             }
         }
         model.addAttribute("adminRoomDto",adminRoomDto);
-        return "redirect:/adminRoom/home";
+        return "admin/adminRoomUpdatePage";
     }
 
 

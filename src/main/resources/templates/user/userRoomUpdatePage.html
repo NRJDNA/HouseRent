@@ -30,8 +30,8 @@
     <div class="card"style="margin-right: 250px">
         <div class="card-body">
             <div class="container my-10">
-                <p class="bottomNav">
-                    <a th:href="@{/}" class="btn btn-primary">back</a>
+                <p class="title" th:align="right" style="margin-right: 400px">
+                    <a th:href="@{/userRoom/home}" class="btn btn-large btn-primary">back</a>
                 </p>
                 <h3> <u><b>UserRoom Update </b></u></h3>
                 <div class="col-md-15">
@@ -72,9 +72,11 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="date" class="col-form-label">Room Need date</label>
+                                <label for="date" class="col-form-label">Date</label>
                                 <input type="date" th:field="*{userRoomDate}" class="form-control"
-                                       id="date" placeholder="Enter the Room date"  />
+                                       id="date" placeholder="Enter the date"/>
+                                <p class="display_msg" th:if="${#fields.hasErrors('date')}"
+                                   th:errors="*{userRoomDate}"></p>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Description</label>
@@ -91,7 +93,7 @@
                             </div>
                         </div>
                     </form>
-                    <h4 th:text="${message}" style="color: #e80707"></h4>
+                    <h4 th:text="${message}" style="color: #47e807"></h4>
                 </div>
             </div>
         </div>
