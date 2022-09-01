@@ -46,8 +46,8 @@ public class AdminRoom {
     @Column
     private String  email;
 
-    @Column
-    private String filePath;
+//    @Column
+//    private String filePath;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "adminRoom_date")

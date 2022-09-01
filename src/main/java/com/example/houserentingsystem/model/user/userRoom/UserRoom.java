@@ -45,9 +45,9 @@ public class UserRoom {
     @Column(name = "description", nullable = false)
     private String description;
 
-    //images
-    @Column
-    private String filePath;
+//    //images
+//    @Column
+//    private String filePath;
 
     @ManyToOne
     @JoinColumn(name = "register_id", referencedColumnName = "id",

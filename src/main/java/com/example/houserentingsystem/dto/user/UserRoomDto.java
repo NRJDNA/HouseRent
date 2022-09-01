@@ -4,7 +4,6 @@ import com.example.houserentingsystem.enums.RoomStatus;
 import com.example.houserentingsystem.enums.RoomType;
 import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -34,9 +33,9 @@ public class UserRoomDto {
     private RoomStatus roomStatus;
     private Register register;
 
-    private String filePath;
-
-    private MultipartFile multipartFile;
+//    private String filePath;
+//
+//    private MultipartFile multipartFile;
 
 
     @NotEmpty(message = "Description can not be empty!!")

@@ -59,6 +59,13 @@
                                 <p class="display_msg" th:if="${#fields.hasErrors('address')}"
                                    th:errors="*{address}"></p>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="address" class="col-form-label">Email</label>
+                                <input type="email" th:field="*{email}" class="form-control"
+                                       id="email" placeholder="Enter the email"/>
+                                <p class="display_msg" th:if="${#fields.hasErrors('email')}"
+                                   th:errors="*{email}"></p>
+                            </div>
                             <div class="form-group col-md-5">
                                 <label class="text-dark">Select Room</label>
                                 <select name="todo status" th:field="*{roomType}" class="form-select" aria-label="Default select example">
@@ -96,7 +103,7 @@
                             </div>
                         </div>
                     </form>
-                    <h4 th:text="*{message}" style="color: #e80707"></h4>
+                    <h4 th:text="${message}" style="color: #e80707"></h4>
                 </div>
             </div>
         </div>

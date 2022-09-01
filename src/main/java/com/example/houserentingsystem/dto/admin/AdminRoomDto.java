@@ -6,7 +6,6 @@ import com.example.houserentingsystem.enums.RoomType;
 import com.example.houserentingsystem.model.admin.AdminRegister;
 import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -35,10 +34,10 @@ public class AdminRoomDto {
     private String adminRoomDate;
 //    private LocalDate localDate;
 
-    private String filePath;
-
-
-    private MultipartFile multipartFile;
+//    private String filePath;
+//
+//
+//    private MultipartFile multipartFile;
 
     private RoomStatus roomStatus;
 
