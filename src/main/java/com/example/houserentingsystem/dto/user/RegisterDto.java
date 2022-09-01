@@ -25,7 +25,6 @@ public class RegisterDto {
 
     private Gender gender;
 
-    @Email
     @NotEmpty(message = "Email can not be empty!!")
     private String email;
 

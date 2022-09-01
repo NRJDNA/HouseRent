@@ -18,9 +18,11 @@ import javax.validation.Valid;
 @RequestMapping("/adminRegister")
 public class AdminRegisterController {
     private final AdminRegisterServiceImpl adminRegisterService;
+    private final SendEmailComponents sendEmailComponents;
 
-    public AdminRegisterController(AdminRegisterServiceImpl adminRegisterService) {
+    public AdminRegisterController(AdminRegisterServiceImpl adminRegisterService, SendEmailComponents sendEmailComponents) {
         this.adminRegisterService = adminRegisterService;
+        this.sendEmailComponents = sendEmailComponents;
     }
 
     @GetMapping
@@ -34,6 +36,10 @@ public class AdminRegisterController {
                               BindingResult bindingResult, Model model) {
         if (!bindingResult.hasErrors()) {
             try {
+                sendEmailComponents.sendEmail(adminRegisterDto.getEmail(),
+                        "Registration",
+                        "Hello Mr/Mrs. "+adminRegisterDto.getName()+"\n As a Renter Register SuccessFull");
+                adminRegisterDto = adminRegisterService.save(adminRegisterDto);
                 adminRegisterDto = adminRegisterService.save(adminRegisterDto);
                 model.addAttribute("message", "Admin register successfully added!");
             } catch (Exception e) {

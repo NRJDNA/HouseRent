@@ -1,5 +1,6 @@
 package com.example.houserentingsystem.controller.register;
 
+import com.example.houserentingsystem.component.SendEmailComponents;
 import com.example.houserentingsystem.dto.user.RegisterDto;
 import com.example.houserentingsystem.service.impl.user.RegisterServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -16,9 +17,11 @@ import javax.validation.Valid;
 @RequestMapping("/registration")
 public class UserRegisterController {
     private final RegisterServiceImpl registerService;
+    private final SendEmailComponents sendEmailComponents;
 
-    public UserRegisterController(RegisterServiceImpl registerService) {
+    public UserRegisterController(RegisterServiceImpl registerService, SendEmailComponents sendEmailComponents) {
         this.registerService = registerService;
+        this.sendEmailComponents = sendEmailComponents;
     }
 
     @GetMapping
@@ -34,6 +37,10 @@ public class UserRegisterController {
         //check the binding result
         if (!bindingResult.hasErrors()) {
             try {
+                sendEmailComponents.sendEmail(registerDto.getEmail(),"Registration",
+                        "Hello Mr/Mrs. "+registerDto.getName()+"\n As a Roomer Register Successfully"
+                        );
+                registerDto=registerService.save(registerDto);
                 //save the database
                 registerDto = registerService.save(registerDto);
                 model.addAttribute("message", "Roomer register successfully added");
