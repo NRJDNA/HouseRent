@@ -1,143 +1,200 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+<!--  <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--  <title>Room || DETAILS</title>-->
+<!--  <link rel="stylesheet"-->
+<!--        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--  <style>-->
+<!--    .basic-charge{-->
+<!--      color: #3ac162;-->
+<!--    }-->
+<!--  /*  Styles start here*/-->
+<!--    * {-->
+<!--      margin: 0;-->
+<!--      padding: 0;-->
+<!--      box-sizing: border-box;-->
+<!--    }-->
+
+<!--    body {-->
+<!--      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,-->
+<!--      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";-->
+<!--    }-->
+
+<!--    .main-container {-->
+<!--      padding: 30px;-->
+<!--    }-->
+
+<!--    /* HEADING */-->
+
+<!--    .heading {-->
+<!--      text-align: center;-->
+<!--    }-->
+
+<!--    .heading__title {-->
+<!--      font-weight: 600;-->
+<!--    }-->
+
+<!--    .heading__credits {-->
+<!--      margin: 10px 0px;-->
+<!--      color: #888888;-->
+<!--      font-size: 25px;-->
+<!--      transition: all 0.5s;-->
+<!--    }-->
+
+<!--    .heading__link {-->
+<!--      text-decoration: none;-->
+<!--    }-->
+
+<!--    .heading__credits .heading__link {-->
+<!--      color: inherit;-->
+<!--    }-->
+
+<!--    /* CARDS */-->
+
+<!--    .cards {-->
+<!--      display: flex;-->
+<!--      flex-wrap: wrap;-->
+<!--      justify-content: space-between;-->
+<!--    }-->
+
+<!--    .card {-->
+<!--      margin: 20px;-->
+<!--      padding: 20px;-->
+<!--      width: 500px;-->
+<!--      min-height: 200px;-->
+<!--      display: grid;-->
+<!--      grid-template-rows: 20px 50px 1fr 50px;-->
+<!--      border-radius: 10px;-->
+<!--      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);-->
+<!--      transition: all 0.2s;-->
+<!--    }-->
+
+<!--    .card:hover {-->
+<!--      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);-->
+<!--      transform: scale(1.01);-->
+<!--    }-->
+
+<!--    .card__link,-->
+<!--    .card__exit,-->
+<!--    .card__icon {-->
+<!--      position: relative;-->
+<!--      text-decoration: none;-->
+<!--      color: rgba(255, 255, 255, 0.9);-->
+<!--    }-->
+
+<!--    .card__link::after {-->
+<!--      position: absolute;-->
+<!--      top: 25px;-->
+<!--      left: 0;-->
+<!--      content: "";-->
+<!--      width: 0%;-->
+<!--      height: 3px;-->
+<!--      background-color: rgba(255, 255, 255, 0.6);-->
+<!--      transition: all 0.5s;-->
+<!--    }-->
+
+<!--    .card__link:hover::after {-->
+<!--      width: 100%;-->
+<!--    }-->
+
+<!--    .card__exit {-->
+<!--      grid-row: 1/2;-->
+<!--      justify-self: end;-->
+<!--    }-->
+
+<!--    .card__icon {-->
+<!--      grid-row: 2/3;-->
+<!--      font-size: 30px;-->
+<!--    }-->
+
+<!--    .card__title {-->
+<!--      grid-row: 3/4;-->
+<!--      font-weight: 400;-->
+<!--      color: #ffffff;-->
+<!--    }-->
+
+<!--    .card__apply {-->
+<!--      grid-row: 4/5;-->
+<!--      align-self: center;-->
+<!--    }-->
+
+<!--    /* CARD BACKGROUNDS */-->
+
+<!--    .card-3 {-->
+<!--      background: radial-gradient(#76b2fe, #b69efe);-->
+<!--    }-->
+
+<!--    /* RESPONSIVE */-->
+
+<!--    @media (max-width: 1600px) {-->
+<!--      .cards {-->
+<!--        justify-content: center;-->
+<!--      }-->
+<!--    }-->
+
+
+<!--  </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div th:replace="fragment/adminResuable ::generic_cs"></div>-->
+<!--<div th:replace="fragment/adminResuable ::script"></div>-->
+<!--<div th:replace="fragment/adminResuable ::fonts"></div>-->
+<!--<div th:replace="fragment/adminResuable ::navbar_css"></div>-->
+<!--<div th:replace="fragment/adminResuable ::navbar_css"></div>-->
+<!--<div th:replace="fragment/adminResuable ::adminnavbar"></div>-->
+
+<!--&lt;!&ndash;Heading &ndash;&gt;-->
+
+<!--<div class="main-container">-->
+<!--  <div class="heading">-->
+<!--    <h1 class="heading__title">Room Lists</h1>-->
+<!--  </div>-->
+
+<!--&lt;!&ndash;  Cards start from here&ndash;&gt;-->
+<!--  <div class="row">-->
+<!--    <div class="card card-3 col-sm-4" th:each="adminRoom,loop :${adminRoomList}">-->
+<!--      <div class="card__icon"><i class="fas fa-bolt"></i></div>-->
+<!--      <span class="card__exit"><i class="fas fa-times"></i></span>-->
+<!--      <h2 class="card__title" th:text="${adminRoom.name}">Name: </h2><br>-->
+<!--      <h2 class="card__title" th:text="${adminRoom.contact}">Contact: </h2><br>-->
+<!--      <h2 class="card__title" th:text="${adminRoom.address}">Address: </h2><br>-->
+<!--      <h2 class="card__title" th:text="${adminRoom.roomType}">RoomType: </h2><br>-->
+<!--      <h2 class="card__title" th:text="${adminRoom.adminRoomDate}">Date: </h2><br>-->
+<!--      <h2 class="card__title" th:text="${adminRoom.price}">Price: </h2><br>-->
+<!--      <h2 class="card__title" th:text="${adminRoom.description}">Description: </h2><br>-->
+<!--      <p class="card__apply">-->
+<!--        <a class="card__link" th:href="@{~/adminRoom/view/}+${adminRoom.id}"> View <i class="fas fa-arrow-right"></i></a><br>-->
+<!--        <a class="card__link" th:href="@{~/adminRoom/update/}+${adminRoom.id}"> Update <i class="fas fa-arrow-right"></i></a><br>-->
+<!--        <a class="card__link" th:href="@{~/adminRoom/delete/}+${adminRoom.id}"> Delete <i class="fas fa-arrow-right"></i></a><br>-->
+<!--      </p>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Room || DETAILS</title>
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <style>
-    .basic-charge{
-      color: #3ac162;
-    }
-  /*  Styles start here*/
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-      Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    }
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
-    .main-container {
-      padding: 30px;
-    }
-
-    /* HEADING */
-
-    .heading {
-      text-align: center;
-    }
-
-    .heading__title {
-      font-weight: 600;
-    }
-
-    .heading__credits {
-      margin: 10px 0px;
-      color: #888888;
-      font-size: 25px;
-      transition: all 0.5s;
-    }
-
-    .heading__link {
-      text-decoration: none;
-    }
-
-    .heading__credits .heading__link {
-      color: inherit;
-    }
-
-    /* CARDS */
-
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .card {
-      margin: 20px;
-      padding: 20px;
-      width: 500px;
-      min-height: 200px;
-      display: grid;
-      grid-template-rows: 20px 50px 1fr 50px;
-      border-radius: 10px;
-      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-      transition: all 0.2s;
-    }
-
-    .card:hover {
-      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-      transform: scale(1.01);
-    }
-
-    .card__link,
-    .card__exit,
-    .card__icon {
-      position: relative;
-      text-decoration: none;
-      color: rgba(255, 255, 255, 0.9);
-    }
-
-    .card__link::after {
-      position: absolute;
-      top: 25px;
-      left: 0;
-      content: "";
-      width: 0%;
-      height: 3px;
-      background-color: rgba(255, 255, 255, 0.6);
-      transition: all 0.5s;
-    }
-
-    .card__link:hover::after {
-      width: 100%;
-    }
-
-    .card__exit {
-      grid-row: 1/2;
-      justify-self: end;
-    }
-
-    .card__icon {
-      grid-row: 2/3;
-      font-size: 30px;
-    }
-
-    .card__title {
-      grid-row: 3/4;
-      font-weight: 400;
-      color: #ffffff;
-    }
-
-    .card__apply {
-      grid-row: 4/5;
-      align-self: center;
-    }
-
-    /* CARD BACKGROUNDS */
-
-    .card-3 {
-      background: radial-gradient(#76b2fe, #b69efe);
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 1600px) {
-      .cards {
-        justify-content: center;
-      }
-    }
-
-
-  </style>
+  <title>Frontend Mentor | Four card feature section</title>
+  <link rel="stylesheet" href="styles.css">
+  <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;1,200;1,400;1,600&display=swap"
+          rel="stylesheet">
 </head>
+
 <body>
 <div th:replace="fragment/adminResuable ::generic_cs"></div>
 <div th:replace="fragment/adminResuable ::script"></div>
@@ -145,19 +202,17 @@
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::adminnavbar"></div>
+<div class="header">
+  <h1>Reliable, efficient delivery</h1>
+  <h1>Powered by Technology</h1>
 
-<!--Heading -->
+  <p>Our Artificial Intelligence powered tools use millions of project data points
+    to ensure that your project is successful</p>
+</div>
+<div class="row1-container">
 
-<div class="main-container">
-  <div class="heading">
-    <h1 class="heading__title">Room Lists</h1>
-  </div>
-
-<!--  Cards start from here-->
-  <div class="card card-3" th:each="adminRoom,loop :${adminRoomList}" style="col m">
-    <div class="card__icon"><i class="fas fa-bolt"></i></div>
-    <p class="card__exit"><i class="fas fa-times"></i></p>
-  Name:  <h2 class="card__title" th:text="${adminRoom.name}">Name: </h2><br>
+  <div class="box red col-sm-4" th:each="adminRoom,loop :${adminRoomList}">
+    <h2 class="card__title" th:text="${adminRoom.name}">Name: </h2><br>
     <h2 class="card__title" th:text="${adminRoom.contact}">Contact: </h2><br>
     <h2 class="card__title" th:text="${adminRoom.address}">Address: </h2><br>
     <h2 class="card__title" th:text="${adminRoom.roomType}">RoomType: </h2><br>
@@ -169,7 +224,133 @@
       <a class="card__link" th:href="@{~/adminRoom/update/}+${adminRoom.id}"> Update <i class="fas fa-arrow-right"></i></a><br>
       <a class="card__link" th:href="@{~/adminRoom/delete/}+${adminRoom.id}"> Delete <i class="fas fa-arrow-right"></i></a><br>
     </p>
+    <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="">
+    <style>:root {
+      --red: hsl(0, 78%, 62%);
+      --cyan: hsl(180, 62%, 55%);
+      --orange: hsl(34, 97%, 64%);
+      --blue: hsl(212, 86%, 64%);
+      --varyDarkBlue: hsl(234, 12%, 34%);
+      --grayishBlue: hsl(229, 6%, 66%);
+      --veryLightGray: hsl(0, 0%, 98%);
+      --weight1: 200;
+      --weight2: 400;
+      --weight3: 600;
+    }
+
+
+
+    .attribution {
+      font-size: 11px; text-align: center;
+    }
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    h1:first-of-type {
+      font-weight: var(--weight1);
+      color: var(--varyDarkBlue);
+
+    }
+
+    h1:last-of-type {
+      color: var(--varyDarkBlue);
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .header {
+      text-align: center;
+      line-height: 0.8;
+      margin-bottom: 50px;
+      margin-top: 100px;
+    }
+
+    .header p {
+      margin: 0 auto;
+      line-height: 2;
+      color: var(--grayishBlue);
+    }
+
+
+    .box p {
+      color: var(--grayishBlue);
+    }
+
+    .box {
+      border-radius: 5px;
+      box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+      padding: 30px;
+      margin: 20px;
+    }
+
+    img {
+      float: right;
+    }
+
+    @media (max-width: 450px) {
+      .box {
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 950px) and (min-width: 450px) {
+      .box {
+        text-align: center;
+        height: 180px;
+      }
+    }
+
+    .cyan {
+      border-top: 3px solid var(--cyan);
+    }
+    .red {
+      border-top: 3px solid var(--red);
+    }
+    .blue {
+      border-top: 3px solid var(--blue);
+    }
+    .orange {
+      border-top: 3px solid var(--orange);
+    }
+
+    h2 {
+      color: var(--varyDarkBlue);
+      font-weight: var(--weight3);
+    }
+
+
+    @media (min-width: 950px) {
+      .row1-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .row2-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .box-down {
+        position: relative;
+        top: 150px;
+      }
+      .box {
+        width: 20%;
+
+      }
+      .header p {
+        width: 30%;
+      }
+
+    } </style>
   </div>
 </div>
 </body>
+
 </html>

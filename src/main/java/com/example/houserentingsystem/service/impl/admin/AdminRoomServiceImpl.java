@@ -42,7 +42,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
             entity.setAddress(adminRoomDto.getAddress());
             entity.setEmail(adminRoomDto.getEmail());
             entity.setRoomType(adminRoomDto.getRoomType());
-            entity.setAdminRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(adminRoomDto.getAdminRoomDate()));
+            entity.setAdminRoomDate(adminRoomDto.getAdminRoomDate());
             entity.setDescription(adminRoomDto.getDescription());
             entity.setPrice(adminRoomDto.getPrice());
             entity.setAdminRegister(AuthorizeUser.getAdminRegister());
@@ -70,7 +70,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
                     .address(adminRoom.getAddress())
                     .email(adminRoom.getEmail())
                     .roomType(adminRoom.getRoomType())
-                    .adminRoomDate((new SimpleDateFormat("yyyy-mm-dd").format(adminRoom.getAdminRoomDate())))
+                    .adminRoomDate(adminRoom.getAdminRoomDate())
                     .roomStatus(adminRoom.getRoomStatus())
                     .description(adminRoom.getDescription())
                     .price(adminRoom.getPrice())
@@ -96,8 +96,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
                     .address(adminRoom.getAddress())
                     .email(adminRoom.getEmail())
                     .roomType(adminRoom.getRoomType())
-                    .adminRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(adminRoom.getAdminRoomDate()))
-//                    .adminRoomDate(adminRoom.getAdminRoomDate())
+                    .adminRoomDate(adminRoom.getAdminRoomDate())
                     .roomStatus(adminRoom.getRoomStatus())
                     .price(adminRoom.getPrice())
                     .description(adminRoom.getDescription())
@@ -137,7 +136,8 @@ public class AdminRoomServiceImpl implements AdminRoomService {
         entity.setAddress(adminRoomDto.getAddress());
         entity.setEmail(adminRoomDto.getEmail());
         entity.setRoomType(adminRoomDto.getRoomType());
-        entity.setAdminRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(adminRoomDto.getAdminRoomDate()));
+        entity.setAdminRoomDate(adminRoomDto.getAdminRoomDate());
+        entity.setPrice(adminRoomDto.getPrice());
         entity.setAdminRegister(AuthorizeUser.getAdminRegister());
         entity.setDescription(adminRoomDto.getDescription());
         entity = adminRoomRepo.save(entity);
@@ -155,7 +155,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
                             .roomStatus(adminRoom.getRoomStatus())
                             .roomType(adminRoom.getRoomType())
                             .price(adminRoom.getPrice())
-                            .adminRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(adminRoom.getAdminRoomDate()))
+                            .adminRoomDate(adminRoom.getAdminRoomDate())
                             .address(adminRoom.getAddress())
                             .description(adminRoom.getDescription())
                     .adminRegister(adminRoom.getAdminRegister())

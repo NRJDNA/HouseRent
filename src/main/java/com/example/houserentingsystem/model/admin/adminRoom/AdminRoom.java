@@ -49,7 +49,6 @@ public class AdminRoom {
 //    @Column
 //    private String filePath;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "adminRoom_date")
     private Date adminRoomDate;
     @Column(name="Price")

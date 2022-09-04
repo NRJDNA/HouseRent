@@ -37,13 +37,13 @@ public class AdminRoomController {
 
         return "admin/adminRoomHome";
     }
-    @GetMapping("/homes")
-    public String openHomes(Model model) throws IOException {
-        model.addAttribute("adminRoomDto",new AdminRoomDto());
-        model.addAttribute("adminRoomList",adminRoomService.findAll());
-
-        return "admin/adminRoomHomes";
-    }
+//    @GetMapping("/homes")
+//    public String openHomes(Model model) throws IOException {
+//        model.addAttribute("adminRoomDto",new AdminRoomDto());
+//        model.addAttribute("adminRoomList",adminRoomService.findAll());
+//
+//        return "admin/adminRoomHomes";
+//    }
 
     @GetMapping("/about")
     public String openAbout(Model model){

@@ -93,7 +93,7 @@ public class UserRoomController {
             }
         }
         model.addAttribute("userRoomDto", userRoomDto);
-        return "user/userRoomPage";
+        return "user/userRoomUpdatePage";
     }
 
     @GetMapping("/delete/{id}")

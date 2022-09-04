@@ -3,8 +3,10 @@ package com.example.houserentingsystem.repo.admin;
 import com.example.houserentingsystem.model.admin.adminRoom.AdminRoom;
 import com.example.houserentingsystem.model.user.userRoom.UserRoom;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -13,6 +15,10 @@ import java.util.List;
 public interface AdminRoomRepo extends JpaRepository<AdminRoom , Integer> {
     @Query(value = "SELECT * FROM admin_admin_room u WHERE u.admin_register_id = ?1", nativeQuery = true)
     List<AdminRoom> getAdminRoomList(Integer id);
+    @Modifying
+    @Transactional
+    @Query(value = "update admin_admin_room set email =?1 , price =?2 where id=?3 ", nativeQuery = true)
+    void updateAdminRoom(String email , String price, Integer id);
 
     @Query(value = "select * from admin_admin_room u  order by u.id",nativeQuery = true)
     List<AdminRoom> getAdminRoomDetails();

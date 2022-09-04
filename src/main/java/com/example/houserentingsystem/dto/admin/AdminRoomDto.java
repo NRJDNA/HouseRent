@@ -6,6 +6,7 @@ import com.example.houserentingsystem.enums.RoomType;
 import com.example.houserentingsystem.model.admin.AdminRegister;
 import com.example.houserentingsystem.model.register.Register;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -31,7 +32,8 @@ public class AdminRoomDto {
 //    @NotEmpty(message = "Type of Room can't be empty")
     private RoomType roomType;
 
-    private String adminRoomDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date adminRoomDate;
 //    private LocalDate localDate;
 
 //    private String filePath;

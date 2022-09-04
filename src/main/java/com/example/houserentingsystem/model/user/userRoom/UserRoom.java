@@ -29,13 +29,14 @@ public class UserRoom {
 
     @Column(name = "address", nullable = false)
     private String address;
+    @Column(name="email")
+    private String email;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "room_type")
     private RoomType roomType;
 
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "userRoomNeed_date")
     private Date userRoomDate;
 
@@ -44,6 +45,8 @@ public class UserRoom {
 
     @Column(name = "description", nullable = false)
     private String description;
+    @Column
+    private String rentedBy;
 
 //    //images
 //    @Column

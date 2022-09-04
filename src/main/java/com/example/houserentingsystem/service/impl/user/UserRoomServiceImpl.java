@@ -2,9 +2,12 @@ package com.example.houserentingsystem.service.impl.user;
 
 
 import com.example.houserentingsystem.component.authorizeUser.AuthorizeUser;
+import com.example.houserentingsystem.dto.admin.AdminRoomDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
 import com.example.houserentingsystem.enums.RoomStatus;
+import com.example.houserentingsystem.model.admin.adminRoom.AdminRoom;
 import com.example.houserentingsystem.model.user.userRoom.UserRoom;
+import com.example.houserentingsystem.repo.admin.AdminRoomRepo;
 import com.example.houserentingsystem.repo.user.RegisterRepo;
 import com.example.houserentingsystem.repo.user.UserRoomRepo;
 import com.example.houserentingsystem.service.user.UserRoomService;
@@ -12,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,11 +23,17 @@ import java.util.Optional;
 public class UserRoomServiceImpl implements UserRoomService {
     private final UserRoomRepo userRoomRepo;
     private final RegisterRepo registerRepo;
+    private final AdminRoomDto adminRoomDto;
+    private final AdminRoom adminRoom;
 
 
-    public UserRoomServiceImpl(UserRoomRepo userRoomRepo, RegisterRepo registerRepo) {
+
+    public UserRoomServiceImpl(UserRoomRepo userRoomRepo, RegisterRepo registerRepo, AdminRoomRepo adminRoomRepo, AdminRoom adminRoom, AdminRoomDto adminRoomDto, AdminRoom adminRoom1) {
         this.userRoomRepo = userRoomRepo;
         this.registerRepo=registerRepo;
+
+        this.adminRoomDto = adminRoomDto;
+        this.adminRoom = adminRoom1;
     }
 
     @Override
@@ -36,12 +44,14 @@ public class UserRoomServiceImpl implements UserRoomService {
             entity.setName(userRoomDto.getName());
             entity.setContact(userRoomDto.getContact());
             entity.setAddress(userRoomDto.getAddress());
+            entity.setEmail(userRoomDto.getEmail());
             entity.setRoomType(userRoomDto.getRoomType());
-            entity.setUserRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(userRoomDto.getUserRoomDate()));
-//            entity.setUserRoomDate(new Date());
+            entity.setUserRoomDate(userRoomDto.getUserRoomDate());
+            //            entity.setUserRoomDate(new Date());
 //        entity.getUserRoomDate(userRoomDto.getUserRoomDate());
             entity.setRoomStatus(userRoomDto.getRoomStatus());
             entity.setDescription(userRoomDto.getDescription());
+//            entity.setRentedBy(adminRoomDto.getName());
             entity.setRegister(AuthorizeUser.getRegister());
 
 
@@ -66,11 +76,14 @@ public class UserRoomServiceImpl implements UserRoomService {
                     .name(userRoom.getName())
                     .contact(userRoom.getContact())
                     .address(userRoom.getAddress())
+                    .email(userRoom.getEmail())
                     .roomType(userRoom.getRoomType())
-                    .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
+                    .userRoomDate(userRoom.getUserRoomDate())
                     .roomStatus(userRoom.getRoomStatus())
+
 //                    .userRoomDate(userRoom.getUserRoomDate())
                     .description(userRoom.getDescription())
+
                     .register(userRoom.getRegister())
 //                    .register(userRoom.getRegister())
                     .build());
@@ -103,9 +116,10 @@ public class UserRoomServiceImpl implements UserRoomService {
                         .name(userRoom.getName())
                         .contact(userRoom.getContact())
                         .address(userRoom.getAddress())
+                        .email(userRoom.getEmail())
                         .roomType(userRoom.getRoomType())
 //                        .userRoomDate(userRoom.getUserRoomDate())
-                        .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
+                        .userRoomDate(userRoom.getUserRoomDate())
                         .roomStatus(userRoom.getRoomStatus())
 //                        .register(userRoom.getRegister())
                         .description(userRoom.getDescription())
@@ -143,12 +157,12 @@ public class UserRoomServiceImpl implements UserRoomService {
         entity.setName(userRoomDto.getName());
         entity.setContact(userRoomDto.getContact());
         entity.setAddress(userRoomDto.getAddress());
+        entity.setEmail(userRoomDto.getEmail());
         entity.setRoomType(userRoomDto.getRoomType());
-        entity.setUserRoomDate(new SimpleDateFormat("yyyy-mm-dd").parse(userRoomDto.getUserRoomDate()));
-        entity.setRoomStatus(RoomStatus.AVAILABLE);
+        entity.setUserRoomDate(userRoomDto.getUserRoomDate());
         entity.setDescription(userRoomDto.getDescription());
         entity.setRegister(AuthorizeUser.getRegister());
-        entity = userRoomRepo.save(entity);
+        userRoomRepo.save(entity);
         return userRoomDto;
     }
 
@@ -160,8 +174,9 @@ public class UserRoomServiceImpl implements UserRoomService {
                             .id(userRoom.getId())
                             .name(userRoom.getName())
                             .contact(userRoom.getContact())
+                            .email(userRoom.getEmail())
                             .roomStatus(userRoom.getRoomStatus())
-                            .userRoomDate(new SimpleDateFormat("yyyy-mm-dd").format(userRoom.getUserRoomDate()))
+                            .userRoomDate(userRoom.getUserRoomDate())
                             .description(userRoom.getDescription())
                             .address(userRoom.getAddress())
                             .roomType(userRoom.getRoomType())
