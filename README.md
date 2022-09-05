@@ -7,7 +7,7 @@ Email : SMTP mail service
 
 Security : Spring Security
 
-Database name : house
+Database name : hrs
 
 
 This is the system where we can do CURD operation and extra things
@@ -23,3 +23,5 @@ User as a Roomer
 Admin can add a room for rent
 
 User can see the room for take
+
+
