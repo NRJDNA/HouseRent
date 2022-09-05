@@ -32,10 +32,10 @@ public interface UserRoomRepo extends JpaRepository<UserRoom, Integer> {
     @Query(value = "select ur.register_id from user_user_room uc where id=ur.id",nativeQuery = true)
     List<UserRoom>getRegister(Integer userId);
 
-    @Modifying
-    @Transactional
-    @Query(value = "update user_user_room u set u.rentedBy = ?1 where u.id =?2")
-    public void setRentedBy(String adminName, Integer id);
+//    @Modifying
+//    @Transactional
+//    @Query(value = "update user_user_room u set u.rentedBy = ?1 where u.id =?2")
+//    public void setRentedBy(String adminName, Integer id);
 
 
 }
