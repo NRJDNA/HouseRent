@@ -2,9 +2,11 @@ package com.example.houserentingsystem.repo.user;
 
 import com.example.houserentingsystem.model.user.userRoom.UserRoom;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
@@ -29,6 +31,11 @@ public interface UserRoomRepo extends JpaRepository<UserRoom, Integer> {
 
     @Query(value = "select ur.register_id from user_user_room uc where id=ur.id",nativeQuery = true)
     List<UserRoom>getRegister(Integer userId);
+
+    @Modifying
+    @Transactional
+    @Query(value = "update user_user_room u set u.rentedBy = ?1 where u.id =?2")
+    public void setRentedBy(String adminName, Integer id);
 
 
 }

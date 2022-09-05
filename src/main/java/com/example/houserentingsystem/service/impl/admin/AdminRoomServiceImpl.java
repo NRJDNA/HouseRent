@@ -51,6 +51,7 @@ public class AdminRoomServiceImpl implements AdminRoomService {
                 entity.setRoomStatus(RoomStatus.AVAILABLE);
             } else {
                 entity.setRoomStatus(adminRoomDto.getRoomStatus());
+                entity.setName(adminRoomDto.getName());
                 entity.setAdminRegister(adminRoomDto.getAdminRegister());
             }
              adminRoomRepo.save(entity);

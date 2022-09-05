@@ -56,7 +56,7 @@ public class AdminRoomController {
     @GetMapping("/show")
     public String showRoom(Model model) throws IOException{
         model.addAttribute("userRoomList",userRoomService.findAllUserRoom());
-        model.addAttribute("registerList",registerService.findAll());
+        model.addAttribute("registerList",adminRegisterService.findAll());
         return "admin/userRoomHome";
     }
 

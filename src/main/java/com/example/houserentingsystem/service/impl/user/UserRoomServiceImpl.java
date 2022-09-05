@@ -2,14 +2,13 @@ package com.example.houserentingsystem.service.impl.user;
 
 
 import com.example.houserentingsystem.component.authorizeUser.AuthorizeUser;
-import com.example.houserentingsystem.dto.admin.AdminRoomDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
 import com.example.houserentingsystem.enums.RoomStatus;
-import com.example.houserentingsystem.model.admin.adminRoom.AdminRoom;
 import com.example.houserentingsystem.model.user.userRoom.UserRoom;
 import com.example.houserentingsystem.repo.admin.AdminRoomRepo;
 import com.example.houserentingsystem.repo.user.RegisterRepo;
 import com.example.houserentingsystem.repo.user.UserRoomRepo;
+import com.example.houserentingsystem.service.impl.admin.AdminRegisterServiceImpl;
 import com.example.houserentingsystem.service.user.UserRoomService;
 import org.springframework.stereotype.Service;
 
@@ -23,13 +22,15 @@ import java.util.Optional;
 public class UserRoomServiceImpl implements UserRoomService {
     private final UserRoomRepo userRoomRepo;
     private final RegisterRepo registerRepo;
+    private final AdminRegisterServiceImpl adminRegisterService;
 
 
 
-    public UserRoomServiceImpl(UserRoomRepo userRoomRepo, RegisterRepo registerRepo, AdminRoomRepo adminRoomRepo) {
+    public UserRoomServiceImpl(UserRoomRepo userRoomRepo, RegisterRepo registerRepo, AdminRoomRepo adminRoomRepo, AdminRegisterServiceImpl adminRegisterService) {
         this.userRoomRepo = userRoomRepo;
         this.registerRepo=registerRepo;
 
+        this.adminRegisterService = adminRegisterService;
     }
 
     @Override
@@ -51,6 +52,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                 entity.setRoomStatus(RoomStatus.AVAILABLE);
             } else {
                 entity.setRoomStatus(userRoomDto.getRoomStatus());
+                entity.setRentedBy(userRoomDto.getRentedBy());
                 entity.setRegister(userRoomDto.getRegister());
             }
             userRoomRepo.save(entity);
