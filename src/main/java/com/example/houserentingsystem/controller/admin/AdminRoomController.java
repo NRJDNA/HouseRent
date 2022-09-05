@@ -61,10 +61,11 @@ public class AdminRoomController {
     }
 
     @GetMapping("/rented/{id}")
-    public String verifyRoom(@PathVariable("id") Integer id) throws ParseException, IOException {
+    public String verifyRoom(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) throws ParseException, IOException {
         UserRoomDto userRoomDto=userRoomService.findById(id);
         userRoomDto.setRoomStatus(RoomStatus.RENTED);
         userRoomService.save(userRoomDto);
+        redirectAttributes.addFlashAttribute("list", adminRoomService.findAll());
         return "redirect:/adminRoom/show";
     }
     @GetMapping("/unrented/{id}")

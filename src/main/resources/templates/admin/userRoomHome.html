@@ -46,7 +46,9 @@
       <td th:text="${userRoom.address}"></td>
       <td th:text="${userRoom.email}"></td>
       <td th:text="${userRoom.roomType}"></td>
-      <td th:text="${userRoom.userRoomDate}"></td>
+      <td th:text="${#dates.format(userRoom.userRoomDate, 'dd-MMM-yyyy')}">
+
+      <!--      <td th:text="${userRoom.userRoomDate}"></td>-->
             <td th:text="${userRoom.roomStatus}"></td>
       <td th:text="${userRoom.description}"></td>
 

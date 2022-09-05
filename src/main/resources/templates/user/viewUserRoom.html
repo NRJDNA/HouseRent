@@ -43,8 +43,11 @@
         </tr>
         <tr>
             <td>Room Date</td>
-            <td th:text="${userRoomView.userRoomDate}"></td>
+            <td th:text="${#dates.format(userRoomView.userRoomDate, 'dd-MMM-yyyy')}">
+
+            <!--            <td th:text="${userRoomView.userRoomDate}"></td>-->
         </tr>
+
         <tr>
             <td>Room Type</td>
             <td th:text="${userRoomView.roomType}"></td>
@@ -60,7 +63,7 @@
         </tr>
         <tr>
             <td>Rented By</td>
-            <td th:text="${userRoomView.roomStatus}"></td>
+            <td th:each="register,loop : ${list}"><span th:text="${register.name}"></span></td>
         </tr>
         </tbody>
     </table>

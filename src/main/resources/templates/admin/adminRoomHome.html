@@ -53,7 +53,8 @@
             <td th:text="${adminRoom.address}"></td>
             <td th:text="${adminRoom.email}"></td>
             <td th:text="${adminRoom.roomType}"></td>
-            <td th:text="${adminRoom.adminRoomDate}"></td>
+            <td th:text="${#dates.format(adminRoom.adminRoomDate, 'dd-MMM-yyyy')}">
+<!--            <td th:text="${adminRoom.adminRoomDate}"></td>-->
             <td th:text="${adminRoom.price}"></td>
             <td th:text="${adminRoom.description}"></td>
             <!--      <td th:text="${userRoom.userRoomDate}"></td>-->
