@@ -370,7 +370,9 @@
         </tr>
         <tr>
             <td>Room Date</td>
-            <td th:text="${adminRoomView.adminRoomDate}"></td>
+<!--            <td th:text="${adminRoomView.adminRoomDate}"></td>-->
+            <td th:text="${#dates.format(adminRoomView.adminRoomDate, 'dd-MMM-yyyy')}">
+
         </tr>
         <tr>
             <td>Room Type</td>

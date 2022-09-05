@@ -47,7 +47,9 @@
         </tr>
         <tr>
             <td>Room Date</td>
-            <td th:text="${userRoomView.userRoomDate}"></td>
+<!--            <td th:text="${userRoomView.userRoomDate}"></td>-->
+            <td th:text="${#dates.format(userRoomView.userRoomDate, 'dd-MMM-yyyy')}">
+
         </tr>
         <tr>
             <td>Room Type</td>
