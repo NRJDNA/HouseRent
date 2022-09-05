@@ -38,7 +38,7 @@ public class AdminRegisterController {
             try {
                 sendEmailComponents.sendEmail(adminRegisterDto.getEmail(),
                         "Registration",
-                        "Hello Mr/Mrs. "+adminRegisterDto.getName()+"\n As a Renter Register SuccessFull");
+                        "Hello Mr/Mrs. "+adminRegisterDto.getName()+"\n As a Renter Your Registration has been successful");
                 adminRegisterDto = adminRegisterService.save(adminRegisterDto);
                 model.addAttribute("message", "Admin register successfully added!");
             } catch (Exception e) {

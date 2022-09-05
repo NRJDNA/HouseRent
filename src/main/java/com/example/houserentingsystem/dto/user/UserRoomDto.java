@@ -26,7 +26,6 @@ public class UserRoomDto {
 
     @NotEmpty(message = "Address can not be empty!!")
     private String address;
-//    @NotEmpty(message = "Type of Room can't be empty")
     private String email;
     private RoomType roomType;
 

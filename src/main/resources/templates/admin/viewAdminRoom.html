@@ -19,375 +19,378 @@
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::adminnavbar"></div>
-<!--<div class="tab">-->
-<!--    <gh2>Admin Details</gh2>-->
-<!--    <table class="table table-striped">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th scope="col"> Table</th>-->
+<!--<div class="wrapper">-->
+<!--    <article class="codepen__product&#45;&#45;card">-->
+<!--        <div class="card__background">-->
+<!--            <i class="codepen__logo fab fa-codepen"></i>-->
+<!--        </div>-->
+<!--        <header class="header header&#45;&#45;primary">-->
+<!--            <h1 class="heading logo__showcase">-->
+<!--                <a href="#" class="logo">-->
+<!--                    <h1>House View</h1>-->
+<!--                </a>-->
+<!--            </h1>-->
+<!--            <span class="pro&#45;&#45;tag">HRS</span>-->
+<!--        </header>-->
+<!--        <main class="main__content">-->
+<!--            <ul class="features__list">-->
+<!--                <li class="feature">-->
+<!--                    <span class="icon">-->
+<!--                        <i class="fas fa-check"></i>-->
+<!--                    </span>-->
+<!--                    <b>Name:</b> <p class="text" th:text="${adminRoomView.name}"></p>-->
+<!--                </li>-->
+<!--                <li class="feature">-->
+<!--                    <span class="icon">-->
+<!--                        <i class="fas fa-check"></i>-->
+<!--                    </span>-->
+<!--                    <b>Contact:</b> <p class="text" th:text="${adminRoomView.contact}"></p>-->
+<!--                </li>-->
+<!--                <li class="feature">-->
+<!--                    <span class="icon">-->
+<!--                        <i class="fas fa-check"></i>-->
+<!--                    </span>-->
+<!--                    <b>Address:</b> <p class="text" th:text="${adminRoomView.address}" ></p>-->
+<!--                </li>-->
+<!--                <li class="feature">-->
+<!--                    <span class="icon">-->
+<!--                        <i class="fas fa-check"></i>-->
+<!--                    </span>-->
+<!--                    <b>RoomType:</b> <p class="text" th:text="${adminRoomView.roomType}"></p>-->
+<!--                </li>-->
+<!--                <li class="feature">-->
+<!--                    <span class="icon">-->
+<!--                        <i class="fas fa-check"></i>-->
+<!--                    </span>-->
+<!--                    <b>Email:</b> <p class="text" th:text="${adminRoomView.email}"></p>-->
+<!--                </li>-->
+<!--                <li class="feature">-->
+<!--                    <span class="icon">-->
+<!--                        <i class="fas fa-check"></i>-->
+<!--                    </span>-->
+<!--                    <b>Price:</b> <p class="text" th:text="${adminRoomView.price}"></p>-->
+<!--                </li>-->
+<!--                <li class="feature">-->
+<!--                    <span class="icon">-->
+<!--                        <i class="fas fa-check"></i>-->
+<!--                    </span>-->
+<!--                    <b>Description:</b> <p class="text" th:text="${adminRoomView.description}"></p>-->
+<!--                </li>-->
 
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr>-->
-<!--            <td>Name</td>-->
-<!--            <td th:text="${adminRoomView.name}"></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Contact</td>-->
-<!--            <td th:text="${adminRoomView.contact}"></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Room Address</td>-->
-<!--            <td th:text="${adminRoomView.address}"></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Room Date</td>-->
-<!--            <td th:text="${adminRoomView.adminRoomDate}"></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Room Type</td>-->
-<!--            <td th:text="${adminRoomView.roomType}"></td>-->
-<!--        </tr>-->
-<!--        &lt;!&ndash;        <tr>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <td>Room Status</td>&ndash;&gt;-->
-<!--        &lt;!&ndash;            <td th:text="${userRoomView.roomStatus}"></td>&ndash;&gt;-->
-<!--        &lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--                <button type="button" class="cta-btn">Click here to back</button>-->
+<!--            </ul>-->
+<!--        </main>-->
+<!--    </article>-->
+<!--    </main>-->
+<!--    </article>-->
 
-<!--        <tr>-->
-<!--            <td>Room Price</td>-->
-<!--            <td th:text="${adminRoomView.price}"></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Room Description</td>-->
-<!--            <td th:text="${adminRoomView.description}"></td>-->
-<!--        </tr>-->
-
-<!--        </tbody>-->
-<!--    </table>-->
 <!--</div>-->
+<!--<style>-->
+<!--    @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");-->
 
-<div class="wrapper">
-    <article class="codepen__product--card">
-        <div class="card__background">
-            <i class="codepen__logo fab fa-codepen"></i>
-        </div>
-        <header class="header header--primary">
-            <h1 class="heading logo__showcase">
-                <a href="#" class="logo">
-                    <h1>House View</h1>
-                </a>
-            </h1>
-            <span class="pro--tag">HRS</span>
-        </header>
-        <main class="main__content">
-            <ul class="features__list">
-                <li class="feature">
-                    <span class="icon">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <b>Name:</b> <p class="text" th:text="${adminRoomView.name}"></p>
-                </li>
-                <li class="feature">
-                    <span class="icon">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <b>Contact:</b> <p class="text" th:text="${adminRoomView.contact}"></p>
-                </li>
-                <li class="feature">
-                    <span class="icon">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <b>Address:</b> <p class="text" th:text="${adminRoomView.address}" ></p>
-                </li>
-                <li class="feature">
-                    <span class="icon">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <b>RoomType:</b> <p class="text" th:text="${adminRoomView.roomType}"></p>
-                </li>
-                <li class="feature">
-                    <span class="icon">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <b>Email:</b> <p class="text" th:text="${adminRoomView.email}"></p>
-                </li>
-                <li class="feature">
-                    <span class="icon">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <b>Price:</b> <p class="text" th:text="${adminRoomView.price}"></p>
-                </li>
-                <li class="feature">
-                    <span class="icon">
-                        <i class="fas fa-check"></i>
-                    </span>
-                    <b>Description:</b> <p class="text" th:text="${adminRoomView.description}"></p>
-                </li>
+<!--    *,-->
+<!--    *::after,-->
+<!--    *::before {-->
+<!--        margin: 0;-->
+<!--        padding: 0;-->
+<!--        box-sizing: border-box;-->
+<!--    }-->
 
-                <button type="button" class="cta-btn">Click here to back</button>
-            </ul>
-        </main>
-    </article>
-    </main>
-    </article>
+<!--    h1,-->
+<!--    h2,-->
+<!--    h3 {-->
+<!--        font: inherit;-->
+<!--    }-->
 
+<!--    :root {-->
+<!--        /* Sizes */-->
+<!--        &#45;&#45;inline-size&#45;&#45;max: 51.875rem;-->
+<!--        &#45;&#45;inline-size&#45;&#45;min: 22.5rem;-->
+<!--        &#45;&#45;inline-space&#45;&#45;flow: calc(100% - 2rem);-->
+<!--        &#45;&#45;block-size: 100vh;-->
+<!--        &#45;&#45;card-width: 22.5rem;-->
+
+<!--        /* Spacing (margin, padding, gap) */-->
+<!--        &#45;&#45;space-025: 0.25rem;-->
+<!--        &#45;&#45;space-05: 0.5rem;-->
+<!--        &#45;&#45;space-075: 0.75rem;-->
+<!--        &#45;&#45;space-1: 1rem;-->
+<!--        &#45;&#45;space-15: 1.5rem;-->
+<!--        &#45;&#45;space-2: 2rem;-->
+
+<!--        /* Font-size */-->
+<!--        &#45;&#45;fs-xs: 0.87rem;-->
+<!--        &#45;&#45;fs-s: 1rem;-->
+<!--        &#45;&#45;fs-m: 1.15rem;-->
+<!--        &#45;&#45;fs-l: 1.322rem;-->
+<!--        &#45;&#45;fs-xl: 1.521rem;-->
+<!--        &#45;&#45;fs-xxl: 1.749rem;-->
+
+<!--        /* Colors */-->
+<!--        &#45;&#45;bg-dark1: #868ca0;-->
+<!--        &#45;&#45;bg-dark2: #717790;-->
+<!--        &#45;&#45;bg-dark3: #444857;-->
+<!--        &#45;&#45;bg-dark4: #2c303a;-->
+<!--        &#45;&#45;bg-dark5: #1e1f26;-->
+
+<!--        &#45;&#45;text-light: #dee6ed;-->
+<!--        &#45;&#45;bg&#45;&#45;light1: #f1f1f3;-->
+<!--        &#45;&#45;bg&#45;&#45;light2: #e0e7f0;-->
+
+<!--        &#45;&#45;accent-clr1: #47cf73;-->
+<!--        &#45;&#45;accent-clr3: #0ebeff;-->
+<!--        &#45;&#45;accent-clr4: #ffdd40;-->
+<!--        &#45;&#45;accent-clr5: #8591b1;-->
+<!--    }-->
+
+<!--    .wrapper {-->
+<!--        display: flex;-->
+<!--        justify-content: center;-->
+<!--        align-items: center;-->
+<!--        width: clamp(-->
+<!--                var(&#45;&#45;inline-size&#45;&#45;min),-->
+<!--                var(&#45;&#45;inline-space&#45;&#45;flow),-->
+<!--                var(&#45;&#45;inline-size&#45;&#45;max)-->
+<!--        );-->
+<!--        min-block-size: var(&#45;&#45;block-size);-->
+<!--        margin: auto;-->
+<!--    }-->
+
+<!--    .codepen__product&#45;&#45;card {-->
+<!--        width: var(&#45;&#45;card-width);-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        align-items: center;-->
+<!--        padding: var(&#45;&#45;space-05);-->
+<!--        background: linear-gradient(45deg, var(&#45;&#45;bg-dark1), var(&#45;&#45;bg-dark4));-->
+<!--        box-shadow: -0.125em 0.125em 0.5em 0.125em #26323880,-->
+<!--        -0.8em 0.8em 0.9em #0003, -1.5em 1.5em 1.5em 0.125em #b0bec9;-->
+<!--        border-radius: 0.85em;-->
+<!--        overflow: hidden;-->
+<!--        position: relative;-->
+<!--        isolation: isolate;-->
+<!--    }-->
+
+<!--    .card__background {-->
+<!--        position: absolute;-->
+<!--        bottom: -2em;-->
+<!--        z-index: -1;-->
+<!--    }-->
+
+<!--    .codepen__logo {-->
+<!--        display: inline-flex;-->
+<!--        font-size: 20rem;-->
+<!--        color: #0003;-->
+<!--        -webkit-text-stroke: 2px var(&#45;&#45;bg-dark1);-->
+<!--    }-->
+
+<!--    .header&#45;&#45;primary {-->
+<!--        display: flex;-->
+<!--        justify-content: center;-->
+<!--        width: 100%;-->
+<!--        margin-block-end: 1rem;-->
+<!--        gap: var(&#45;&#45;space-025);-->
+<!--    }-->
+
+<!--    .logo {-->
+<!--        height: 3em;-->
+<!--        display: inline-flex;-->
+<!--    }-->
+
+<!--    svg {-->
+<!--        stroke: var(&#45;&#45;bg&#45;&#45;light1);-->
+<!--        stroke-opacity: 0.9;-->
+<!--        filter: drop-shadow(-2px 3px 4px var(&#45;&#45;bg-dark4));-->
+<!--    }-->
+
+<!--    .pro&#45;&#45;tag {-->
+<!--        display: inline-flex;-->
+<!--        font-family: var(&#45;&#45;body-ff);-->
+<!--        align-self: flex-start;-->
+<!--        font-size: var(&#45;&#45;fs-xs);-->
+<!--        color: var(&#45;&#45;bg-dark5);-->
+<!--        font-weight: 600;-->
+<!--        border-radius: 0.125rem;-->
+<!--        background: var(&#45;&#45;accent-clr4);-->
+<!--        padding: 0.125em var(&#45;&#45;space-025);-->
+<!--        line-height: 1;-->
+<!--    }-->
+
+<!--    .main__content {-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        justify-content: center;-->
+<!--        align-items: center;-->
+<!--        gap: var(&#45;&#45;space-15);-->
+<!--    }-->
+
+<!--    .features__list {-->
+<!--        list-style: none;-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        margin-inline: var(&#45;&#45;space-025);-->
+<!--        gap: var(&#45;&#45;space-025);-->
+<!--    }-->
+
+<!--    .feature {-->
+<!--        display: flex;-->
+<!--        gap: var(&#45;&#45;space-05);-->
+<!--        padding-block: var(&#45;&#45;space-025);-->
+<!--    }-->
+
+<!--    .feature:nth-of-type(even) {-->
+<!--        background: linear-gradient(to right, #0000, var(&#45;&#45;bg-dark1), #0000);-->
+<!--    }-->
+
+<!--    .feature:nth-of-type(odd) {-->
+<!--        background: linear-gradient(to right, #0000, var(&#45;&#45;bg-dark2), #0000);-->
+<!--    }-->
+
+<!--    .feature .icon {-->
+<!--        display: inline-flex;-->
+<!--        font-size: var(&#45;&#45;fs-m);-->
+<!--        align-self: center;-->
+<!--        color: var(&#45;&#45;accent-clr1);-->
+<!--    }-->
+
+<!--    .text {-->
+<!--        font-size: var(&#45;&#45;fs-xs);-->
+<!--        font-family: var(&#45;&#45;body&#45;&#45;ff);-->
+<!--        color: var(&#45;&#45;text-light);-->
+<!--    }-->
+
+<!--    .price {-->
+<!--        display: flex;-->
+<!--        flex-direction: column;-->
+<!--        align-items: center;-->
+<!--        gap: var(&#45;&#45;space-025);-->
+<!--        position: relative;-->
+<!--    }-->
+
+<!--    .decorative__tag {-->
+<!--        width: calc(100% - 2rem);-->
+<!--        border: 0.25em solid var(&#45;&#45;accent-clr3);-->
+<!--    }-->
+
+<!--    .header&#45;&#45;secondary {-->
+<!--        font: 800 var(&#45;&#45;fs-xxl) / 1.6 var(&#45;&#45;header-ff);-->
+<!--        color: var(&#45;&#45;bg-dark5);-->
+<!--    }-->
+
+<!--    .price__information&#45;&#45;numbers {-->
+<!--        justify-content: center;-->
+<!--        line-height: 0.8;-->
+<!--    }-->
+
+<!--    .number {-->
+<!--        font-size: 3.4rem;-->
+<!--        font-weight: 800;-->
+<!--        color: var(&#45;&#45;bg-dark5);-->
+<!--        -webkit-text-stroke: 2px currentColor;-->
+<!--        position: relative;-->
+<!--    }-->
+
+<!--    .number::before {-->
+<!--        position: absolute;-->
+<!--        content: "$";-->
+<!--        font-size: 1.25rem;-->
+<!--        left: -0.85rem;-->
+<!--        -webkit-text-stroke: 0;-->
+<!--    }-->
+
+<!--    .month {-->
+<!--        font-weight: 600;-->
+<!--        align-self: flex-end;-->
+<!--    }-->
+
+<!--    .slash {-->
+<!--        padding-inline-end: 0.0625em;-->
+<!--        font-size: 1.25rem;-->
+<!--        font-weight: bolder;-->
+<!--    }-->
+
+<!--    .price__information&#45;&#45;details {-->
+<!--        text-align: center;-->
+<!--        font-size: var(&#45;&#45;fs-s);-->
+<!--        max-width: 16ch;-->
+<!--        font-family: var(&#45;&#45;header-ff);-->
+<!--        font-weight: 500;-->
+<!--        line-height: 1;-->
+<!--    }-->
+
+<!--    b {-->
+<!--        line-height: 1.8;-->
+<!--        font-weight: 800;-->
+<!--    }-->
+
+<!--    .coloring {-->
+<!--        background: hsl(196, 35%, 53%, 0.6);-->
+<!--    }-->
+
+<!--    .cta-btn {-->
+<!--        margin-block: var(&#45;&#45;space-05);-->
+<!--        font: 600 var(&#45;&#45;fs-m) / 1.2 var(&#45;&#45;header-ff);-->
+<!--        text-transform: uppercase;-->
+<!--        outline: none;-->
+<!--        border: none;-->
+<!--        color: var(&#45;&#45;bg-dark4);-->
+<!--        box-shadow: 0 0 0.125em #0003, 0 0.25em 0.25em #0003;-->
+<!--        background: var(&#45;&#45;accent-clr3);-->
+<!--        padding: 0.25em 2em;-->
+<!--        border-radius: 0.25rem;-->
+<!--    }-->
+
+<!--</style>-->
+<div class="tab">
+    <h2>Admin Details</h2>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col"> Table</th>
+            <th scope="col"> Data</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Name</td>
+            <td th:text="${adminRoomView.name}"></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td th:text="${adminRoomView.contact}"></td>
+        </tr>
+        <tr>
+            <td>Room Address</td>
+            <td th:text="${adminRoomView.address}"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td th:text="${adminRoomView.email}"></td>
+        </tr>
+        <tr>
+            <td>Room Date</td>
+            <td th:text="${adminRoomView.adminRoomDate}"></td>
+        </tr>
+        <tr>
+            <td>Room Type</td>
+            <td th:text="${adminRoomView.roomType}"></td>
+        </tr>
+        <tr>
+            <td>Room Status</td>
+            <td th:text="${adminRoomView.roomStatus}"></td>
+        </tr>
+
+        <tr>
+            <td>Room Price</td>
+            <td th:text="${adminRoomView.price}"></td>
+        </tr>
+        <tr>
+            <td>Room Description</td>
+            <td th:text="${adminRoomView.description}"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
-
-    *,
-    *::after,
-    *::before {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    h1,
-    h2,
-    h3 {
-        font: inherit;
-    }
-
-    :root {
-        /* Sizes */
-        --inline-size--max: 51.875rem;
-        --inline-size--min: 22.5rem;
-        --inline-space--flow: calc(100% - 2rem);
-        --block-size: 100vh;
-        --card-width: 22.5rem;
-
-        /* Spacing (margin, padding, gap) */
-        --space-025: 0.25rem;
-        --space-05: 0.5rem;
-        --space-075: 0.75rem;
-        --space-1: 1rem;
-        --space-15: 1.5rem;
-        --space-2: 2rem;
-
-        /* Font-size */
-        --fs-xs: 0.87rem;
-        --fs-s: 1rem;
-        --fs-m: 1.15rem;
-        --fs-l: 1.322rem;
-        --fs-xl: 1.521rem;
-        --fs-xxl: 1.749rem;
-
-        /* Colors */
-        --bg-dark1: #868ca0;
-        --bg-dark2: #717790;
-        --bg-dark3: #444857;
-        --bg-dark4: #2c303a;
-        --bg-dark5: #1e1f26;
-
-        --text-light: #dee6ed;
-        --bg--light1: #f1f1f3;
-        --bg--light2: #e0e7f0;
-
-        --accent-clr1: #47cf73;
-        --accent-clr3: #0ebeff;
-        --accent-clr4: #ffdd40;
-        --accent-clr5: #8591b1;
-    }
-
-    .wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: clamp(
-                var(--inline-size--min),
-                var(--inline-space--flow),
-                var(--inline-size--max)
-        );
-        min-block-size: var(--block-size);
-        margin: auto;
-    }
-
-    .codepen__product--card {
-        width: var(--card-width);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: var(--space-05);
-        background: linear-gradient(45deg, var(--bg-dark1), var(--bg-dark4));
-        box-shadow: -0.125em 0.125em 0.5em 0.125em #26323880,
-        -0.8em 0.8em 0.9em #0003, -1.5em 1.5em 1.5em 0.125em #b0bec9;
-        border-radius: 0.85em;
-        overflow: hidden;
-        position: relative;
-        isolation: isolate;
-    }
-
-    .card__background {
-        position: absolute;
-        bottom: -2em;
-        z-index: -1;
-    }
-
-    .codepen__logo {
-        display: inline-flex;
-        font-size: 20rem;
-        color: #0003;
-        -webkit-text-stroke: 2px var(--bg-dark1);
-    }
-
-    .header--primary {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-block-end: 1rem;
-        gap: var(--space-025);
-    }
-
-    .logo {
-        height: 3em;
-        display: inline-flex;
-    }
-
-    svg {
-        stroke: var(--bg--light1);
-        stroke-opacity: 0.9;
-        filter: drop-shadow(-2px 3px 4px var(--bg-dark4));
-    }
-
-    .pro--tag {
-        display: inline-flex;
-        font-family: var(--body-ff);
-        align-self: flex-start;
-        font-size: var(--fs-xs);
-        color: var(--bg-dark5);
-        font-weight: 600;
-        border-radius: 0.125rem;
-        background: var(--accent-clr4);
-        padding: 0.125em var(--space-025);
-        line-height: 1;
-    }
-
-    .main__content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: var(--space-15);
-    }
-
-    .features__list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        margin-inline: var(--space-025);
-        gap: var(--space-025);
-    }
-
-    .feature {
-        display: flex;
-        gap: var(--space-05);
-        padding-block: var(--space-025);
-    }
-
-    .feature:nth-of-type(even) {
-        background: linear-gradient(to right, #0000, var(--bg-dark1), #0000);
-    }
-
-    .feature:nth-of-type(odd) {
-        background: linear-gradient(to right, #0000, var(--bg-dark2), #0000);
-    }
-
-    .feature .icon {
-        display: inline-flex;
-        font-size: var(--fs-m);
-        align-self: center;
-        color: var(--accent-clr1);
-    }
-
-    .text {
-        font-size: var(--fs-xs);
-        font-family: var(--body--ff);
-        color: var(--text-light);
-    }
-
-    .price {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-025);
-        position: relative;
-    }
-
-    .decorative__tag {
-        width: calc(100% - 2rem);
-        border: 0.25em solid var(--accent-clr3);
-    }
-
-    .header--secondary {
-        font: 800 var(--fs-xxl) / 1.6 var(--header-ff);
-        color: var(--bg-dark5);
-    }
-
-    .price__information--numbers {
-        justify-content: center;
-        line-height: 0.8;
-    }
-
-    .number {
-        font-size: 3.4rem;
-        font-weight: 800;
-        color: var(--bg-dark5);
-        -webkit-text-stroke: 2px currentColor;
-        position: relative;
-    }
-
-    .number::before {
-        position: absolute;
-        content: "$";
-        font-size: 1.25rem;
-        left: -0.85rem;
-        -webkit-text-stroke: 0;
-    }
-
-    .month {
-        font-weight: 600;
-        align-self: flex-end;
-    }
-
-    .slash {
-        padding-inline-end: 0.0625em;
-        font-size: 1.25rem;
-        font-weight: bolder;
-    }
-
-    .price__information--details {
-        text-align: center;
-        font-size: var(--fs-s);
-        max-width: 16ch;
-        font-family: var(--header-ff);
-        font-weight: 500;
-        line-height: 1;
-    }
-
-    b {
-        line-height: 1.8;
-        font-weight: 800;
-    }
-
-    .coloring {
-        background: hsl(196, 35%, 53%, 0.6);
-    }
-
-    .cta-btn {
-        margin-block: var(--space-05);
-        font: 600 var(--fs-m) / 1.2 var(--header-ff);
-        text-transform: uppercase;
-        outline: none;
-        border: none;
-        color: var(--bg-dark4);
-        box-shadow: 0 0 0.125em #0003, 0 0.25em 0.25em #0003;
-        background: var(--accent-clr3);
-        padding: 0.25em 2em;
-        border-radius: 0.25rem;
-    }
-
-</style>
 </body>
 </html>

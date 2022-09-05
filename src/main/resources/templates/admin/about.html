@@ -108,25 +108,27 @@
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::adminnavbar"></div>
 
-  <img  width="100%" height="100%" th:src="@{image/house.jpg}"/>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <h1>Card Image with description on :hover</h1>
-  <div class="cards">
-    <div class="card">
-      <h2 class="card-title">HOUSE</h2>
-      <img th:src="@{image/houses.jpg}"/>
-      <p class="card-desc">About House</p>
-    </div>
-    <div class="card">
-      <h2 class="card-title">FLAT</h2>
-      <img th:src="@{image/flats.jpg}" />
-      <p class="card-desc">About Flat</p>
-    </div>
-    <div class="card">
-      <h2 class="card-title">ROOM</h2>
-      <img th:src="@{image/rooms.jpg}"/>
-      <p class="card-desc">You can write something here</p>
-    </div>
-  </div>
+<table class="table table-hover" id="myTable">
+<h2>Your Details </h2>
+<thead class="table-dark">
+<tr>
+  <th scope="col">SN</th>
+  <!--            <th scope="col">Name</th>-->
+  <th scope="col">Name</th>
+  <th scope="col">Contact</th>
+  <th scope="col">Email</th>
+  <th scope="col">ID Number</th>
+
+</tr>
+</thead>
+  <tbody>
+  <tr th:each="adminRegister,loop :${adminRegisterList}">
+    <th th:text="${loop.count}"></th>
+    <td th:text="${adminRegister.name}"></td>
+    <td th:text="${adminRegister.contact}"></td>
+    <td th:text="${adminRegister.email}"></td>
+    <td th:text="${adminRegister.citizenshipNo}"></td>
+  </tbody>
+</table>
 </body>
 </html>

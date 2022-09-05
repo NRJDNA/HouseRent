@@ -26,7 +26,6 @@
     <thead class="table-dark">
     <tr>
       <th scope="col">SN</th>
-      <!--            <th scope="col">Name</th>-->
       <th scope="col">Name</th>
       <th scope="col">Contact</th>
       <th scope="col">Address</th>
@@ -34,7 +33,6 @@
       <th scope="col">Room Type</th>
       <th scope="col"> Date</th>
       <th scope="col"> Price</th>
-      <!--            <th scope="col">Status</th>-->
       <th scope="col">Description</th>
       <th scope="col">Status</th>
       <th scope="col">Action</th>
@@ -52,17 +50,9 @@
       <td th:text="${adminRoom.price}"></td>
       <td th:text="${adminRoom.description}"></td>
       <td th:text="${adminRoom.roomStatus}"></td>
-      <!--      <td th:text="${userRoom.userRoomDate}"></td>-->
       <td>
         <a th:href="@{~/userRoom/aview/}+${adminRoom.id}">
           <botton class="btn btn-info">View</botton>
-        </a>
-<!--        <a th:href="@{~/adminRoom/update/}+${adminRoom.id}">-->
-<!--          <botton class="btn btn-primary">Request</botton>-->
-<!--        </a>-->
-
-<!--        <a th:href="@{~/adminRoom/delete/}+${adminRoom.id}">-->
-      <a>    <botton class="btn btn-danger">Remove</botton>
         </a>
       </td>
     </tr>

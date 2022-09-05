@@ -15,10 +15,10 @@ import java.util.List;
 public interface AdminRoomRepo extends JpaRepository<AdminRoom , Integer> {
     @Query(value = "SELECT * FROM admin_admin_room u WHERE u.admin_register_id = ?1", nativeQuery = true)
     List<AdminRoom> getAdminRoomList(Integer id);
-    @Modifying
-    @Transactional
-    @Query(value = "update admin_admin_room set email =?1 , price =?2 where id=?3 ", nativeQuery = true)
-    void updateAdminRoom(String email , String price, Integer id);
+//    @Modifying
+//    @Transactional
+//    @Query(value = "update admin_admin_room set email =?1 , price =?2 where id=?3 ", nativeQuery = true)
+//    void updateAdminRoom(String email , String price, Integer id);
 
     @Query(value = "select * from admin_admin_room u  order by u.id",nativeQuery = true)
     List<AdminRoom> getAdminRoomDetails();
@@ -32,6 +32,4 @@ public interface AdminRoomRepo extends JpaRepository<AdminRoom , Integer> {
     @Query(value = "select count(ur.user_room_status)from user_user_room ur where ur.user_room_status=1",nativeQuery = true)
     String getRentedUserRoom();
 
-//    @Query("SELECT p FROM Product p WHERE CONCAT(p.name, p.brand, p.madein, p.price) LIKE %?1%")
-//public List<Product> search(String keyword);
 }

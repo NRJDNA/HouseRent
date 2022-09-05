@@ -1,5 +1,6 @@
 package com.example.houserentingsystem.service.impl.admin;
 import com.example.houserentingsystem.component.SendEmailComponents;
+import com.example.houserentingsystem.component.authorizeUser.AuthorizeUser;
 import com.example.houserentingsystem.dto.admin.AdminRegisterDto;
 import com.example.houserentingsystem.enums.UserStatus;
 import com.example.houserentingsystem.model.User;
@@ -12,7 +13,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AdminRegisterServiceImpl implements AdminRegisterService {
@@ -36,7 +39,6 @@ public class AdminRegisterServiceImpl implements AdminRegisterService {
         adminRegister.setAddress(adminRegisterDto.getAddress());
         adminRegister.setGender(adminRegisterDto.getGender());
         adminRegister.setEmail(adminRegisterDto.getEmail());
-//        sendEmailComponents.sendEmail(adminRegisterDto.getEmail(),adminRegisterDto.getName(),false);
         adminRegister.setContact(adminRegisterDto.getContact());
         adminRegister.setIdNumber(adminRegisterDto.getCitizenshipNo());
 
@@ -44,7 +46,6 @@ public class AdminRegisterServiceImpl implements AdminRegisterService {
 
         User user = new User();
         user.setEmail(adminRegisterDto.getEmail());
-//        sendEmailComponents.sendEmail(adminRegisterDto.getEmail(),adminRegisterDto.getName(),false);
         user.setPassword(passwordEncoder.encode(adminRegisterDto.getPassword()));
         user.setUserStatus(UserStatus.ADMIN);
         userService.save(user);
@@ -53,11 +54,33 @@ public class AdminRegisterServiceImpl implements AdminRegisterService {
 
     @Override
     public List<AdminRegisterDto> findAll() {
-        return null;
+        List<AdminRegisterDto> adminRegisterList= new ArrayList<>();
+        List<AdminRegister> adminRegisterList1 = adminRegisterRepo.getAdminRegisterList(AuthorizeUser.getAdminRegister().getId());
+for(AdminRegister adminRegister : adminRegisterList1){
+    adminRegisterList.add(AdminRegisterDto.builder()
+            .id(adminRegister.getId())
+            .name(adminRegister.getName())
+            .contact(adminRegister.getContact())
+            .email(adminRegister.getEmail())
+            .citizenshipNo(adminRegister.getIdNumber())
+            .build());
+}
+        return adminRegisterList;
     }
 
     @Override
     public AdminRegisterDto findById(Integer integer) {
+        AdminRegister adminRegister;
+        Optional<AdminRegister> optionalAdminRegister= adminRegisterRepo.findById(integer);
+        if(optionalAdminRegister.isPresent()){
+            adminRegister= optionalAdminRegister.get();
+            return AdminRegisterDto.builder()
+                    .id(adminRegister.getId())
+                    .name(adminRegister.getName())
+                    .contact(adminRegister.getContact())
+
+                    .build();
+        }
         return null;
     }
 

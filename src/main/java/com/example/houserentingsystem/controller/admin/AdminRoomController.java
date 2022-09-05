@@ -1,9 +1,11 @@
 package com.example.houserentingsystem.controller.admin;
 
 //import com.example.houserentingsystem.component.SendEmailComponents;
+import com.example.houserentingsystem.dto.admin.AdminRegisterDto;
 import com.example.houserentingsystem.dto.admin.AdminRoomDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
 import com.example.houserentingsystem.enums.RoomStatus;
+import com.example.houserentingsystem.service.impl.admin.AdminRegisterServiceImpl;
 import com.example.houserentingsystem.service.impl.admin.AdminRoomServiceImpl;
 import com.example.houserentingsystem.service.impl.user.RegisterServiceImpl;
 import com.example.houserentingsystem.service.impl.user.UserRoomServiceImpl;
@@ -23,11 +25,13 @@ public class AdminRoomController {
     private final AdminRoomServiceImpl adminRoomService;
     private final RegisterServiceImpl registerService;
     private final UserRoomServiceImpl userRoomService;
+    private final AdminRegisterServiceImpl adminRegisterService;
 
-    public AdminRoomController(AdminRoomServiceImpl adminRoomService,RegisterServiceImpl registerService,UserRoomServiceImpl userRoomService) {
+    public AdminRoomController(AdminRoomServiceImpl adminRoomService, RegisterServiceImpl registerService, UserRoomServiceImpl userRoomService, AdminRegisterServiceImpl adminRegisterService) {
         this.adminRoomService=adminRoomService;
         this.registerService=registerService;
         this.userRoomService=userRoomService;
+        this.adminRegisterService = adminRegisterService;
     }
 
     @GetMapping("/home")
@@ -37,25 +41,13 @@ public class AdminRoomController {
 
         return "admin/adminRoomHome";
     }
-//    @GetMapping("/homes")
-//    public String openHomes(Model model) throws IOException {
-//        model.addAttribute("adminRoomDto",new AdminRoomDto());
-//        model.addAttribute("adminRoomList",adminRoomService.findAll());
-//
-//        return "admin/adminRoomHomes";
-//    }
 
     @GetMapping("/about")
     public String openAbout(Model model){
+        model.addAttribute("adminRegisterDto",new AdminRegisterDto());
+        model.addAttribute("adminRegisterList",adminRegisterService.findAll());
         return "admin/about";
     }
-//    @GetMapping("/home")
-//    public String openShowRoom(Model model) {
-//        model.addAttribute("userRoomDto", new UserRoomDto());
-//        model.addAttribute("userRoomList", userRoomService.findAll());
-////        model.addAttribute("userName",registerService.findAll());
-//        return "user/userRoomHome";
-//    }
     @GetMapping("/page")
     public String adminRoomPage(Model model){
         model.addAttribute("adminRoomDto",new AdminRoomDto());
@@ -82,13 +74,6 @@ public class AdminRoomController {
         userRoomService.save(userRoomDto);
         return "redirect:/adminRoom/show";
     }
-//    @GetMapping("/available/{id}")
-//    public String rentRoom(@PathVariable("id") Integer id) throws IOException{
-//        UserRoomDto userRoomDto = userRoomService.findById(id);
-//        userRoomDto.getRoomStatus(RoomStatus.AVAILABLE);
-//        userRoomService.save(userRoomDto);
-//        return "redirect:/adminRoom/show";
-//    }
 
     @PostMapping("/create")
     public String createAdminRoom(@Valid @ModelAttribute AdminRoomDto adminRoomDto, BindingResult bindingResult,Model model){
@@ -143,12 +128,4 @@ public class AdminRoomController {
     }
 
 
-
-    /*
-    @GetMapping("/delete/{id}")
-    public String deleteUserRoom(@PathVariable("id") Integer id , Model model){
-        userRoomService.deleteById(id);
-        return "redirect:/admin/show";
-    }
-     */
 }

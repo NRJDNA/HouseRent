@@ -25,16 +25,14 @@
     <thead class="table-dark">
     <tr>
       <th scope="col">SN</th>
-      <!--            <th scope="col">Name</th>-->
       <th scope="col">Name</th>
       <th scope="col">Contact</th>
       <th scope="col">Address</th>
       <th scope="col">Email</th>
       <th scope="col">Room Type</th>
       <th scope="col"> Date</th>
-      <!--            <th scope="col"> Date</th>-->
       <th scope="col">Description</th>
-      <th scope="col">Status</th>
+<!--      <th scope="col">Status</th>-->
       <th scope="col">Action</th>
     </tr>
     </thead>
@@ -48,10 +46,7 @@
       <td th:text="${userRoom.roomType}"></td>
       <td th:text="${userRoom.userRoomDate}"></td>
       <td th:text="${userRoom.description}"></td>
-      <td th:text="${userRoom.roomStatus}"></td>
-
-
-      <!--      <td th:text="${userRoom.userRoomDate}"></td>-->
+<!--      <td th:text="${userRoom.roomStatus}"></td>-->
       <td>
         <a th:href="@{~/userRoom/view/}+${userRoom.id}">
           <botton class="btn btn-info">View</botton>

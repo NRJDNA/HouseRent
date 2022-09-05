@@ -23,7 +23,6 @@ public class AdminRegisterDto {
     private Gender gender;
     @NotEmpty(message = "Id Cannot be empty")
     private String citizenshipNo;
-//    private String post;
     @NotEmpty()
     private String password;
 }

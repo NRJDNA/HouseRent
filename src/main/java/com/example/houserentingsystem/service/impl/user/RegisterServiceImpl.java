@@ -1,5 +1,6 @@
 package com.example.houserentingsystem.service.impl.user;
 
+import com.example.houserentingsystem.component.authorizeUser.AuthorizeUser;
 import com.example.houserentingsystem.dto.user.RegisterDto;
 import com.example.houserentingsystem.enums.UserStatus;
 import com.example.houserentingsystem.model.User;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,7 +52,18 @@ public class RegisterServiceImpl implements RegisterService {
 
     @Override
     public List<RegisterDto> findAll() {
-        return null;
+        List<RegisterDto> registerList=new ArrayList<>();
+        List<Register> registerList1 =registerRepo.getRegisterList(AuthorizeUser.getRegister().getId());
+        for(Register register : registerList1){
+            registerList.add(RegisterDto.builder()
+                    .id(register.getId())
+                    .name(register.getName())
+                    .mobileNumber(register.getMobileNumber())
+                    .email(register.getEmail())
+                    .citizenshipNo(register.getNationalIdNumber())
+                    .build());
+        }
+        return registerList;
     }
 
     @Override

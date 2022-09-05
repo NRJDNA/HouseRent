@@ -29,7 +29,6 @@
 <div th:replace="fragment/resuable ::font"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
-<!--<div th:replace="fragment/resuable ::navbar"></div>-->
 <div class="container col-7 md-7 p-5">
 
   <form class="forms" th:action="@{/adminRegister}" th:method="post" th:object="${adminRegisterDto}">
@@ -80,11 +79,6 @@
                id="inputAddress" placeholder="Email *">
       </div>
       <div class="form-row">
-        <!--                <div class="form-group col-md-6">-->
-        <!--                    <label for="inputEmail4">Post</label>-->
-        <!--                    <input type="text" class="form-control" th:field="*{post}"-->
-        <!--                           id="inputEmail4" placeholder="Post">-->
-        <!--                </div>-->
         <div class="form-group col-md-6">
           <label for="inputPassword4">Password</label>
           <input type="password" class="form-control" th:field="*{password}"

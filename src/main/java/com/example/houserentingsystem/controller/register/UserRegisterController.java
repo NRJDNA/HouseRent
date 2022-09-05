@@ -38,7 +38,7 @@ public class UserRegisterController {
         if (!bindingResult.hasErrors()) {
             try {
                 sendEmailComponents.sendEmail(registerDto.getEmail(),"Registration",
-                        "Hello Mr/Mrs. "+registerDto.getName()+"\n As a Roomer Register Successfully"
+                        "Hello Mr/Mrs. "+registerDto.getName()+"\n As a Roomer Your registration has been Successfully"
                         );
                 //save the database
                 registerDto = registerService.save(registerDto);
@@ -49,8 +49,6 @@ public class UserRegisterController {
             }
         }
         model.addAttribute("registerDto", registerDto);
-        //return
-//        return "redirect:/registration?success";
         return "user/registration";
     }
 

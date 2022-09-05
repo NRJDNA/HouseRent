@@ -29,12 +29,10 @@ public class AdminRoomDto {
 
     @NotEmpty(message = "Address Cannot be empty!!")
     private String address;
-//    @NotEmpty(message = "Type of Room can't be empty")
     private RoomType roomType;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date adminRoomDate;
-//    private LocalDate localDate;
 
 //    private String filePath;
 //

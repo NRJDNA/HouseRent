@@ -1,6 +1,7 @@
 package com.example.houserentingsystem.controller.user.userRoom;
 
 
+import com.example.houserentingsystem.dto.user.RegisterDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
 import com.example.houserentingsystem.service.impl.admin.AdminRoomServiceImpl;
 import com.example.houserentingsystem.service.impl.user.RegisterServiceImpl;
@@ -19,11 +20,13 @@ public class UserRoomController {
     private final UserRoomServiceImpl userRoomService;
     private final RegisterServiceImpl registerService;
     private final AdminRoomServiceImpl adminRoomService;
+    private final RegisterServiceImpl registerServices;
 
-    public UserRoomController(UserRoomServiceImpl userRoomService, RegisterServiceImpl registerService, AdminRoomServiceImpl adminRoomService) {
+    public UserRoomController(UserRoomServiceImpl userRoomService, RegisterServiceImpl registerService, AdminRoomServiceImpl adminRoomService, RegisterServiceImpl registerServices) {
         this.userRoomService = userRoomService;
         this.registerService = registerService;
         this.adminRoomService = adminRoomService;
+        this.registerServices = registerServices;
     }
 
     @GetMapping("/home")
@@ -32,6 +35,12 @@ public class UserRoomController {
         model.addAttribute("userRoomList", userRoomService.findAll());
 //        model.addAttribute("userName",registerService.findAll());
         return "user/userRoomHome";
+    }
+    @GetMapping("/about")
+    public String openAbout(Model model){
+        model.addAttribute("registerDto",new RegisterDto());
+        model.addAttribute("registerList",registerServices.findAll());
+        return "user/about";
     }
 
     @GetMapping("/page")

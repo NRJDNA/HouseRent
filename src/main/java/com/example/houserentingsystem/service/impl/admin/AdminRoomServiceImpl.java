@@ -111,21 +111,6 @@ public class AdminRoomServiceImpl implements AdminRoomService {
 
         adminRoomRepo.deleteById(integer);
     }
-//    public Integer getTotalAdminRoom()
-//    {
-//        Integer totalAdminRoom=Integer.valueOf(adminRoomRepo.getTotalAdminRoom());
-//        return totalAdminRoom;
-//    }
-//    public Integer getTotalPending()
-//    {
-//        Integer totalPending=Integer.valueOf(userRoomRepo.getPendingUserRoom());
-//        return totalPending;
-//    }
-//    public Integer getTotalApprove()
-//    {
-//        Integer totalApprove=Integer.valueOf(userRoomRepo.getApproveUserRoom());
-//        return totalApprove;
-//    }
 
 
     public AdminRoomDto updateAdminRoom(AdminRoomDto adminRoomDto) throws ParseException {
