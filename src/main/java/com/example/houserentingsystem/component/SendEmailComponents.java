@@ -17,7 +17,7 @@ public class SendEmailComponents {
 
         SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setFrom("copycon2022@gmail.com");
+        message.setFrom("houserentnn@gmail.com");
         message.setTo(toEmail);
         message.setText(body);
         message.setSubject(subject);
