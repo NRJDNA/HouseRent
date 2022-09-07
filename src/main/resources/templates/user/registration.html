@@ -24,21 +24,29 @@
                   <input type="text" id="form3Example1cg" placeholder="Name *"
                          class="form-control form-control-lg" th:field="*{name}"/>
                   <label class="form-label" for="form3Example1cg">Name</label>
+                  <p style="color: red" class="message" th:if="${#fields.hasErrors('name')}"
+                     th:errors="*{name}"></p>
                 </div>
                 <div class="form-outline mb-4">
                   <input type="number" id="form3Example3cgs" placeholder="National id number *"
                          class="form-control form-control-lg" th:field="*{citizenshipNo}"/>
                   <label class="form-label" for="form3Example3cg">National Id Number</label>
+                  <p style="color: red" class="message" th:if="${#fields.hasErrors('citizenshipNo')}"
+                     th:errors="*{citizenshipNo}"></p>
                 </div>
                 <div class="form-outline mb-4">
                   <input type="email" id="form3Example3cg" placeholder="Email *"
                          class="form-control form-control-lg" th:field="*{email}"/>
                   <label class="form-label" for="form3Example3cg">Your Email</label>
+                  <p style="color: red" class="message" th:if="${#fields.hasErrors('email')}"
+                     th:errors="*{email}"></p>
                 </div>
                 <div class="form-outline mb-4">
                   <input type="number" id="form3Example3cgg" placeholder="Mobile number *"
                          class="form-control form-control-lg" th:field="*{mobileNumber}" required/>
                   <label class="form-label" for="form3Example3cg">Your number</label>
+                  <p style="color: red" class="message" th:if="${#fields.hasErrors('mobileNumber')}"
+                     th:errors="*{mobileNumber}"></p>
                 </div>
                 <div class="form-outline mb-4">
                   <select name="gender" th:field="*{gender}" class="form-select"
@@ -57,6 +65,8 @@
                   <input type="password" id="form3Example4cg" placeholder="Password *"
                          class="form-control form-control-lg" th:field="*{password}" required/>
                   <label class="form-label" for="form3Example4cg">Password</label>
+                  <p style="color: red" class="message" th:if="${#fields.hasErrors('password')}"
+                     th:errors="*{password}"></p>
                 </div>
                 <div class="col-md-6">
                   <input type="submit" class="btn btn-primary" value=" Submit ">
@@ -67,7 +77,7 @@
                         th:href="@{/login}"
                         class="fw-bold text-body"><u>Login here</u></a></p>
               </form>
-              <h4 th:text="*{message}" style="color: #00f352">Renter Registration Successful</h4>
+              <h4 th:text="${message}" style="color: #00f352">Renter Registration Successful</h4>
             </div>
           </div>
         </div>
