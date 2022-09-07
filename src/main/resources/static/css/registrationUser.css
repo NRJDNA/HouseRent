@@ -11,11 +11,11 @@
 
 .gradient-custom-4 {
     /* fallback for old browsers */
-    background: #84fab0;
+    background: rgba(38, 38, 38, 0.67);
 
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgb(143, 178, 244));
+    background: -webkit-linear-gradient(to right, rgba(38, 38, 38, 0.67), rgb(143, 178, 244));
 
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgb(148, 250, 132), rgba(143, 211, 244, 1))
+    background: linear-gradient(to right, rgba(38, 38, 38, 0.67), rgba(143, 211, 244, 1))
 }
