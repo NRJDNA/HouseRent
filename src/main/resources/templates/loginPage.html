@@ -10,6 +10,9 @@
 <div th:replace="fragment/resuable ::font"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
+<div class="container">
+    <h4 class="heading">House Renting System</h4>
+</div>
 <div class="loginform">
     <h2>Login</h2>
     <!-- Start Form -->
@@ -37,6 +40,40 @@
     </form>
 </div>
 <style>
+
+    body {
+        font-family: sans-serif;
+        margin: 0;
+        background-color: #111111;
+    }
+
+    .container {
+        background-color: #111111;
+        display: flex;
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .heading {
+        font-size: 100px;
+        text-shadow: 4px 4px 0px #3F7FBF;
+        mix-blend-mode: screen;
+        animation: fadeIn 2.5s linear forwards;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
     body {
         margin: 0;
         padding: 0;
@@ -55,7 +92,7 @@
         box-sizing: border-box;
         padding: 40px 30px;
         border-radius: 20px;
-        box-shadow: 0px 10px 29px 0px #09fa09;
+        box-shadow: 0px 10px 29px 0px #30bc1a;
     }
 
     .loginform p {
@@ -78,23 +115,6 @@
 
     }
 
-    .avatar {
-        width: 100px;
-        height: 100px;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 0 auto;
-        position: absolute;
-        top: -55px;
-        left: 0px;
-        right: 0px;
-        border: 6px solid #0624d7;
-    }
-
-    .avatar img {
-        width: 100%;
-        height: auto;
-    }
 
     .loginform input[type="text"], input[type="password"] {
         border: none;
