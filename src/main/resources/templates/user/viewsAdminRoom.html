@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>View || UserRoom</title>
+  <style>
+    #container{
+      box-shadow: 0 15px 30px 1px grey;
+      background: rgba(255, 255, 255, 0.90);
+      text-align: center;
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 5em auto;
+      height: 550px;
+      width: 800px;
+
+
+    }
+
+    .product-details {
+      position: relative;
+      text-align: left;
+      overflow: hidden;
+      padding: 30px;
+      height: 100%;
+      float: left;
+      width: 40%;
+
+    }
+
+    #container .product-details h1{
+      font-family: 'Bebas Neue', cursive;
+      display: inline-block;
+      position: relative;
+      font-size: 30px;
+      color: #344055;
+      margin: 0;
+
+    }
+
+    #container .product-details h1:before{
+      position: absolute;
+      content: '';
+      right: 0%;
+      top: 0%;
+      transform: translate(25px, -15px);
+      font-family: 'Bree Serif', serif;
+      display: inline-block;
+      background: #ffe6e6;
+      border-radius: 5px;
+      font-size: 14px;
+      padding: 5px;
+      color: white;
+      margin: 0;
+      animation: chan-sh 6s ease infinite;
+
+    }
+
+    .hint-star {
+      display: inline-block;
+      margin-left: 0.5em;
+      color: gold;
+      width: 50%;
+    }
+
+
+    #container .product-details > p {
+      font-family: 'EB Garamond', serif;
+      text-align: center;
+      font-size: 18px;
+      color: #7d7d7d;
+
+    }
+    .control{
+      position: absolute;
+      bottom: 20%;
+      left: 22.8%;
+
+    }
+    .btn {
+
+      transform: translateY(0px);
+      transition: 0.3s linear;
+      background:  #809fff;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      color: #eee;
+      padding: 0;
+      margin: 0;
+
+    }
+
+    .btn:hover{transform: translateY(-6px);
+      background: #1a66ff;}
+
+    .btn span {
+      font-family: 'Farsan', cursive;
+      transition: transform 0.3s;
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      margin:0;
+
+    }
+    .btn .price, .shopping-cart{
+      background: #333;
+      border: 0;
+      margin: 0;
+    }
+
+    .btn .price {
+      transform: translateX(-10%); padding-right: 15px;
+    }
+
+    .btn .shopping-cart {
+      transform: translateX(-100%);
+      position: absolute;
+      background: #333;
+      z-index: 1;
+      left: 0;
+      top: 0;
+    }
+
+    .btn .buy {z-index: 3; font-weight: bolder;}
+
+    .btn:hover .price {transform: translateX(-110%);}
+
+    .btn:hover .shopping-cart {transform: translateX(0%);}
+
+
+
+    .product-image {
+      transition: all 0.3s ease-out;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      float: right;
+      width: 45%;
+      display: inline-block;
+    }
+
+    #container img {width: 100%;height: 100%;}
+
+    .info {
+      background: rgba(27, 26, 26, 0.9);
+      font-family: 'Bree Serif', serif;
+      transition: all 0.3s ease-out;
+      transform: translateX(-100%);
+      position: absolute;
+      line-height: 1.8;
+      text-align: left;
+      font-size: 105%;
+      cursor: no-drop;
+      color: #FFF;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    .info h2 {text-align: center}
+    .product-image:hover .info{transform: translateX(0);}
+
+    .info ul li{transition: 0.3s ease;}
+    .info ul li:hover{transform: translateX(50px) scale(1.3);}
+
+    .product-image:hover img {transition: all 0.3s ease-out;}
+    .product-image:hover img {transform: scale(1.2, 1.2);}
+  </style>
+</head>
+<body style="background-color: #dddddd">
+<div th:replace="fragment/userResuable ::generic_cs"></div>
+<div th:replace="fragment/userResuable ::script"></div>
+<div th:replace="fragment/userResuable ::fonts"></div>
+<div th:replace="fragment/userResuable ::navbar_css"></div>
+<div th:replace="fragment/userResuable ::navbar_css"></div>
+<div th:replace="fragment/userResuable ::usernavbar"></div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div id="container">
+
+  <div class="product-details">
+
+    <h1><b>Renter Details</b></h1>
+<br>
+    <p class="information" style="color: #ff0000"><b>Hover the mouse in the spaces you will get the information....</b><br>
+      <br><br>
+    <i><b>Here you can see the Renter List to find perfect rents</b></i>
+    </p>
+
+
+
+    <div class="control">
+
+      <button class="btn">
+        <a th:href="@{/userRoom/show}" class="btn btn-large btn-primary">Back</a>
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="product-image">
+
+    <div class="info">
+      <h2> Description</h2>
+      <ul>
+        <li><strong>Name : </strong><a th:text="${adminRoomView.name}"></a> </li>
+        <li><strong>Contact : </strong><a th:text="${adminRoomView.contact}"></a> </li>
+        <li><strong>Address : </strong><a th:text="${adminRoomView.address}"></a> </li>
+        <li><strong>Email : </strong><a th:text="${adminRoomView.email}"></a> </li>
+        <li><strong>Date : </strong><a th:text="${#dates.format(adminRoomView.adminRoomDate, 'dd-MMM-yyyy')}"></a> </li>
+        <li><strong>Type : </strong><a th:text="${adminRoomView.roomType}"></a> </li>
+        <li><strong>Status : </strong><a th:text="${adminRoomView.roomStatus}"></a> </li>
+        <li><strong>Price : </strong><a th:text="${adminRoomView.price}"></a> </li><br>
+        <li><strong>Description : </strong></br><a th:text="${adminRoomView.description}"></a> </li>
+
+
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+</body>
+</html>
