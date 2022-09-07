@@ -93,12 +93,12 @@ public class AdminRoomController {
     @GetMapping("/view/{id}")
     public String viewAdminRoom(@PathVariable("id") Integer id,Model model) throws IOException {
         model.addAttribute("adminRoomView",adminRoomService.findById(id));
-        return "admin/viewAdminRoom";
+        return "admin/viewsAdminRoom";
     }
     @GetMapping("/uview/{id}")
     public String viewUserRoom(@PathVariable("id") Integer id, Model model) throws IOException {
         model.addAttribute("userRoomView",userRoomService.findById(id));
-        return "admin/viewUserRoom";
+        return "admin/viewsUserRoom";
     }
     @GetMapping("/update/{id}")
     public String updateAdminRoom(@PathVariable ("id") Integer id, Model model, RedirectAttributes redirectAttributes) throws IOException {
