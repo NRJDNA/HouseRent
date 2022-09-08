@@ -42,6 +42,12 @@ public class UserRoomController {
         model.addAttribute("registerList",registerServices.findAll());
         return "user/about";
     }
+    @GetMapping("/abouts")
+    public String openAbouts(Model model){
+        model.addAttribute("registerDto",new RegisterDto());
+        model.addAttribute("registerList",registerServices.findAll());
+        return "user/abouts";
+    }
 
     @GetMapping("/page")
     public String userRoomPage(Model model) {

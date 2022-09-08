@@ -28,6 +28,25 @@
       text-decoration: none;
       color: #555;
     }
+  /*  Front page*/
+    .landing-page .info {
+      width: 35%;
+      float: left;
+      margin-top: 130px;
+    }.landing-page .image {
+       width: 50%;
+       float: right;
+       margin-top: 35px;
+     }
+    .clearfix {
+      clear: both;
+    }.landing-page .image {
+       width: 50%;
+       float: right;
+       margin-top: 35px;
+     }
+
+    /* End Landing Page */
   </style>
 </head>
 <body style="background-color: #ffffff">
@@ -38,20 +57,36 @@
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::adminnavbar"></div>
 
-<div class="vh-100">
-  <img  width="100%" height="100%" th:src="@{image/house.jpg}"/>
-  <h2 class="ue"></h2>
-</div>
+<!--<div class="vh-100">-->
+<!--  <img  width="100%" height="100%" th:src="@{image/house.jpg}"/>-->
+<!--  <h2 class="ue"></h2>-->
+<!--</div>-->
 
+
+<div class="landing-page">
+  <div class="container">
+    <div class="header-area">
+    </div>
+    <div class="info">
+      <h1>Looking For Roomer</h1>
+      <p>House is the place to live peacefully </p>
+    </div>
+    <div class="image">
+      <img src="https://i.postimg.cc/nLpt5zHz/houses.jpg">
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+</div>
 <div class="bg-light">
   <div class="container py-5">
-    <div class="row h-100 align-items-center py-5">
-      <div class="col-lg-6">
-        <h1 class="display-4">About Us</h1>
-        <p class="lead text-muted mb-0">House Renting Service </p>
-      </div>
-      <div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>
-    </div>
+<!--    <div class="row h-100 align-items-center py-5">-->
+<!--      <div class="col-lg-6">-->
+<!--        <h1 class="display-4">About Us</h1>-->
+<!--        <p class="lead text-muted mb-0">House Renting Service </p>-->
+<!--      </div>-->
+<!--      <div class="col-lg-6 d-none d-lg-block"><img src="https://bootstrapious.com/i/snippets/sn-about/illus.png" alt="" class="img-fluid"></div>-->
+<!--    </div>-->
   </div>
 </div>
 
@@ -105,8 +140,8 @@
         <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
           <h5 class="mb-0">Nirajan Dhakal</h5><span class="small text-uppercase text-muted">Developer</span>
           <ul class="social mb-0 list-inline mt-3">
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f">F</i></a></li>
-            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter">T</i></a></li>
+            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-facebook-f"></i></a></li>
+            <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-twitter"></i></a></li>
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-instagram"></i></a></li>
             <li class="list-inline-item"><a href="#" class="social-link"><i class="fa fa-linkedin"></i></a></li>
           </ul>
@@ -120,7 +155,7 @@
 
 <footer class="bg-light pb-5">
   <div class="container text-center">
-    <p class="font-italic text-muted mb-0">&copy; Copyrights HouseRentingSystem.com All rights reserved.</p>
+    <p class="font-italic text-muted mb-0">&copy; Copyrights houserentingsystem.com All rights reserved.</p>
   </div>
 </footer>
 </body>
