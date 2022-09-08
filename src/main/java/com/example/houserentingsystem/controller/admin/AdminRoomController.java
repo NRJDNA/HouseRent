@@ -48,6 +48,12 @@ public class AdminRoomController {
         model.addAttribute("adminRegisterList",adminRegisterService.findAll());
         return "admin/about";
     }
+    @GetMapping("/abouts")
+    public String openAbouts(Model model){
+        model.addAttribute("adminRegisterDto",new AdminRegisterDto());
+        model.addAttribute("adminRegisterList",adminRegisterService.findAll());
+        return "admin/abouts";
+    }
     @GetMapping("/page")
     public String adminRoomPage(Model model){
         model.addAttribute("adminRoomDto",new AdminRoomDto());
