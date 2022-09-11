@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>View || UserRoom</title>
+  <title>View || AdminRoom</title>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Poppins:wght@300;400;500;600&display=swap");
 
@@ -116,7 +116,7 @@
 <div th:replace="fragment/adminResuable ::fonts"></div>
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
 <div th:replace="fragment/adminResuable ::navbar_css"></div>
-<div th:replace="fragment/adminResuable ::adminnavbar"></div>
+<!--<div th:replace="fragment/adminResuable ::adminnavbar"></div>-->
 <br><br>
 
 <div class="user-card">
@@ -127,7 +127,7 @@
     <span class="desc">
       <p>
         <ul>
-        <li><strong>Name : </strong><a th:text="${adminRoomView.name}"></a> </li>
+<!--        <li><strong>Name : </strong><a th:text="${adminRoomView.name}"></a> </li>-->
         <li><strong>Contact : </strong><a th:text="${adminRoomView.contact}"></a> </li>
         <li><strong>Address : </strong><a th:text="${adminRoomView.address}"></a> </li>
         <li><strong>Email : </strong><a th:text="${adminRoomView.email}"></a> </li>
@@ -144,7 +144,6 @@
     <span class="button">
       <button class="show-more-btn">
         <a th:href="@{/adminRoom/home}">Back</a>
-
       </button>
     </span>
 
