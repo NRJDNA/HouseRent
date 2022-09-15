@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Getter
@@ -21,7 +22,7 @@ public class UserRoomDto {
 
     @NotEmpty(message = "Name can not be empty !!")
     private String name;
-
+    @Size(max = 10, min = 10, message = "mobileNumber should be 10.")
     private String contact;
 
     @NotEmpty(message = "Address can not be empty!!")

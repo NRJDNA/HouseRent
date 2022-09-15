@@ -79,6 +79,7 @@ public class AdminRoomController {
         UserRoomDto userRoomDto=userRoomService.findById(id);
         userRoomDto.setRoomStatus(RoomStatus.AVAILABLE);
         userRoomService.save(userRoomDto);
+
         return "redirect:/adminRoom/show";
     }
 

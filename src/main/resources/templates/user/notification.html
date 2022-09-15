@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notification</title>
+    <style>
+        .fa-stack[data-count]:after{
+            position:absolute;
+            right:0%;
+            top:1%;
+            content: attr(data-count);
+            font-size:30%;
+            padding:.4em;
+            border-radius:200px;
+            line-height:.50em;
+            color: white;
+            background:rgba(255,0,0,.85);
+            text-align:center;
+            min-width:2em;
+            font-weight:bold;
+        }
+
+
+    </style>
+</head>
+<body style="background-color: #ffffff">
+<div th:replace="fragment/userResuable ::generic_cs"></div>
+<div th:replace="fragment/userResuable ::script"></div>
+<div th:replace="fragment/userResuable ::fonts"></div>
+<div th:replace="fragment/userResuable ::navbar_css"></div>
+<div th:replace="fragment/userResuable ::navbar_css"></div>
+<div th:replace="fragment/userResuable ::usernavbar"></div>
+
+
+<div>
+  <span class="fa-stack fa-3x" data-count="1">
+  <i class="fa fa-circle fa-stack-2x"></i>
+  <i class="fa fa-bell fa-stack-1x fa-inverse"></i>
+      <a th:text="${userRoomView.get(0).getName()}"></a>
+</span>
+</div>
+
+</body>
+</html>

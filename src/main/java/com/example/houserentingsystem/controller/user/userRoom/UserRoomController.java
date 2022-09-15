@@ -3,6 +3,7 @@ package com.example.houserentingsystem.controller.user.userRoom;
 
 import com.example.houserentingsystem.dto.user.RegisterDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
+import com.example.houserentingsystem.service.impl.admin.AdminRegisterServiceImpl;
 import com.example.houserentingsystem.service.impl.admin.AdminRoomServiceImpl;
 import com.example.houserentingsystem.service.impl.user.RegisterServiceImpl;
 import com.example.houserentingsystem.service.impl.user.UserRoomServiceImpl;
@@ -21,12 +22,14 @@ public class UserRoomController {
     private final RegisterServiceImpl registerService;
     private final AdminRoomServiceImpl adminRoomService;
     private final RegisterServiceImpl registerServices;
+    private final AdminRegisterServiceImpl adminRegisterService;
 
-    public UserRoomController(UserRoomServiceImpl userRoomService, RegisterServiceImpl registerService, AdminRoomServiceImpl adminRoomService, RegisterServiceImpl registerServices) {
+    public UserRoomController(UserRoomServiceImpl userRoomService, RegisterServiceImpl registerService, AdminRoomServiceImpl adminRoomService, RegisterServiceImpl registerServices, AdminRegisterServiceImpl adminRegisterService) {
         this.userRoomService = userRoomService;
         this.registerService = registerService;
         this.adminRoomService = adminRoomService;
         this.registerServices = registerServices;
+        this.adminRegisterService = adminRegisterService;
     }
 
     @GetMapping("/home")
