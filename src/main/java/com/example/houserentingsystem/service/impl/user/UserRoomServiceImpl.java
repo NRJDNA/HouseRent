@@ -123,6 +123,8 @@ public class UserRoomServiceImpl implements UserRoomService {
         entity.setUserRoomDate(userRoomDto.getUserRoomDate());
         entity.setDescription(userRoomDto.getDescription());
         entity.setRegister(AuthorizeUser.getRegister());
+            entity.setRoomStatus(RoomStatus.AVAILABLE);
+
         userRoomRepo.save(entity);
         return userRoomDto;
     }
