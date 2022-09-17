@@ -28,7 +28,7 @@ public class RegisterDto {
     @NotEmpty(message = "Email can not be empty!!")
     private String email;
 
-    @Size(max = 10, min = 0, message = "mobileNumber should be 0 to 10.")
+    @Size(max = 10, min = 10, message = "MobileNumber should be 10 .")
     @NotEmpty(message = "Mobile number can not be empty!!")
     private String mobileNumber;
 

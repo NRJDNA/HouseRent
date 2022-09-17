@@ -2,6 +2,7 @@ package com.example.houserentingsystem.service.impl.user;
 
 
 import com.example.houserentingsystem.component.authorizeUser.AuthorizeUser;
+import com.example.houserentingsystem.dto.admin.AdminRoomDto;
 import com.example.houserentingsystem.dto.user.UserRoomDto;
 import com.example.houserentingsystem.enums.RoomStatus;
 import com.example.houserentingsystem.model.user.userRoom.UserRoom;
@@ -10,6 +11,7 @@ import com.example.houserentingsystem.repo.user.RegisterRepo;
 import com.example.houserentingsystem.repo.user.UserRoomRepo;
 import com.example.houserentingsystem.service.impl.admin.AdminRegisterServiceImpl;
 import com.example.houserentingsystem.service.user.UserRoomService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -23,7 +25,6 @@ public class UserRoomServiceImpl implements UserRoomService {
     private final UserRoomRepo userRoomRepo;
     private final RegisterRepo registerRepo;
     private final AdminRegisterServiceImpl adminRegisterService;
-
 
 
     public UserRoomServiceImpl(UserRoomRepo userRoomRepo, RegisterRepo registerRepo, AdminRoomRepo adminRoomRepo, AdminRegisterServiceImpl adminRegisterService) {
@@ -52,7 +53,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                 entity.setRoomStatus(RoomStatus.AVAILABLE);
             } else {
                 entity.setRoomStatus(userRoomDto.getRoomStatus());
-                entity.setRentedBy(userRoomDto.getRentedBy());
+                entity.setRentedBy(adminRegisterService.findAll().get(0).getName());
                 entity.setRegister(userRoomDto.getRegister());
             }
             userRoomRepo.save(entity);
@@ -73,6 +74,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                     .roomType(userRoom.getRoomType())
                     .userRoomDate(userRoom.getUserRoomDate())
                     .roomStatus(userRoom.getRoomStatus())
+                    .rentedBy(userRoom.getRentedBy())
                     .description(userRoom.getDescription())
                     .register(userRoom.getRegister())
                     .build());
@@ -96,6 +98,7 @@ public class UserRoomServiceImpl implements UserRoomService {
                         .roomType(userRoom.getRoomType())
                         .userRoomDate(userRoom.getUserRoomDate())
                         .roomStatus(userRoom.getRoomStatus())
+                        .rentedBy(userRoom.getRentedBy())
                         .description(userRoom.getDescription())
                         .register(userRoom.getRegister())
                         .build();
@@ -120,6 +123,8 @@ public class UserRoomServiceImpl implements UserRoomService {
         entity.setUserRoomDate(userRoomDto.getUserRoomDate());
         entity.setDescription(userRoomDto.getDescription());
         entity.setRegister(AuthorizeUser.getRegister());
+            entity.setRoomStatus(RoomStatus.AVAILABLE);
+
         userRoomRepo.save(entity);
         return userRoomDto;
     }
@@ -138,27 +143,14 @@ public class UserRoomServiceImpl implements UserRoomService {
                             .description(userRoom.getDescription())
                             .address(userRoom.getAddress())
                             .roomType(userRoom.getRoomType())
+                            .rentedBy(userRoom.getRentedBy())
                     .register(userRoom.getRegister())
                     .build());
         }
         return userRoomList;
     }
 
-    public UserRoomDto findId(Integer integer){
 
-        return null;
-
-    }
-
-    public Integer getTotalRented(){
-        Integer totalRented=Integer.valueOf(userRoomRepo.getAvailableUserRoom());
-        return totalRented;
-    }
-
-    public Integer getTotalAvailable(){
-        Integer totalAvailable = Integer.valueOf(userRoomRepo.getAvailableUserRoom());
-        return totalAvailable;
-    }
 
 
 }
