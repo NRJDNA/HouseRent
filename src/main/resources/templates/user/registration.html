@@ -1,89 +1,246 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Roomer || REGISTRATION</title>
-  <link th:href="@{/css/registrationUser.css}" rel="stylesheet"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin || Register</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+  <style>
+
+
+
+    /*  CSS*/
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins',sans-serif;
+    }
+    body{
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    .container{
+      max-width: 700px;
+      width: 100%;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 5px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    }
+    .container .title{
+      font-size: 25px;
+      font-weight: 500;
+      position: relative;
+    }
+    .container .title::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 30px;
+      border-radius: 5px;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    .content form .user-details{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 20px 0 12px 0;
+    }
+    form .user-details .input-box{
+      margin-bottom: 15px;
+      width: calc(100% / 2 - 20px);
+    }
+    form .input-box span.details{
+      display: block;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .user-details .input-box input{
+      height: 45px;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+      border-radius: 5px;
+      padding-left: 15px;
+      border: 1px solid #ccc;
+      border-bottom-width: 2px;
+      transition: all 0.3s ease;
+    }
+    .user-details .input-box input:focus,
+    .user-details .input-box input:valid{
+      border-color: #9b59b6;
+    }
+    form .gender-details .gender-title{
+      font-size: 20px;
+      font-weight: 500;
+    }
+    form .category{
+      display: flex;
+      width: 80%;
+      margin: 14px 0 ;
+      justify-content: space-between;
+    }
+    form .category label{
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    form .category label .dot{
+      height: 18px;
+      width: 18px;
+      border-radius: 50%;
+      margin-right: 10px;
+      background: #d9d9d9;
+      border: 5px solid transparent;
+      transition: all 0.3s ease;
+    }
+    #dot-1:checked ~ .category label .one,
+    #dot-2:checked ~ .category label .two,
+    #dot-3:checked ~ .category label .three{
+      background: #5710d3;
+      border-color: #d9d9d9;
+    }
+    form input[type="radio"]{
+      display: none;
+    }
+    form .button{
+      height: 45px;
+      margin: 35px 0
+    }
+    form .button input{
+      height: 100%;
+      width: 100%;
+      border-radius: 5px;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    }
+    form .button input:hover{
+      /* transform: scale(0.99); */
+      background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    }
+    @media(max-width: 584px){
+      .container{
+        max-width: 100%;
+      }
+      form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+      }
+      form .category{
+        width: 100%;
+      }
+      .content form .user-details{
+        max-height: 300px;
+        overflow-y: scroll;
+      }
+      .user-details::-webkit-scrollbar{
+        width: 5px;
+      }
+    }
+    @media(max-width: 459px){
+      .container .content .category{
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
-<body>
+<body style=" background-color: #525252">
 <div th:replace="fragment/resuable ::generic_css"></div>
 <div th:replace="fragment/resuable ::script"></div>
 <div th:replace="fragment/resuable ::font"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
 <div th:replace="fragment/resuable ::navbar_css"></div>
-<section class="vh-100 bg-image" >
-  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-          <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
-              <h2 class="text-uppercase text-center mb-5">Create a roomer account</h2>
-              <form th:action="@{/registration}" th:method="post" th:object="${registerDto}">
-                <div class="form-outline mb-4">
-                  <input type="text" id="form3Example1cg" placeholder="Name *"
-                         class="form-control form-control-lg" th:field="*{name}"/>
-                  <label class="form-label" for="form3Example1cg">Name</label>
-                  <p style="color: red" class="message" th:if="${#fields.hasErrors('name')}"
-                     th:errors="*{name}"></p>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="number" id="form3Example3cgs" placeholder="National id number *"
-                         class="form-control form-control-lg" th:field="*{citizenshipNo}"/>
-                  <label class="form-label" for="form3Example3cg">National Id Number</label>
-                  <p style="color: red" class="message" th:if="${#fields.hasErrors('citizenshipNo')}"
-                     th:errors="*{citizenshipNo}"></p>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3cg" placeholder="Email *"
-                         class="form-control form-control-lg" th:field="*{email}"/>
-                  <label class="form-label" for="form3Example3cg">Your Email</label>
-                  <p style="color: red" class="message" th:if="${#fields.hasErrors('email')}"
-                     th:errors="*{email}"></p>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="number" id="form3Example3cgg" placeholder="Mobile number *"
-                         class="form-control form-control-lg" th:field="*{mobileNumber}" required/>
-                  <label class="form-label" for="form3Example3cg">Your number</label>
-                  <p style="color: red" class="message" th:if="${#fields.hasErrors('mobileNumber')}"
-                     th:errors="*{mobileNumber}"></p>
-                </div>
-                <div class="form-outline mb-4">
-                  <select name="gender" th:field="*{gender}" class="form-select"
-                          aria-label="Default select example" required/>
-                  <option value="">Select Gender</option>
-                  <th:block th:each="gender : ${T(com.example.houserentingsystem.enums.Gender).values()}">
-                    <option
-                            th:value="${gender}"
-                            th:text="${gender}">
 
-                    </option>
-                  </th:block>
-                  </select>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4cg" placeholder="Password *"
-                         class="form-control form-control-lg" th:field="*{password}" required/>
-                  <label class="form-label" for="form3Example4cg">Password</label>
-                  <p style="color: red" class="message" th:if="${#fields.hasErrors('password')}"
-                     th:errors="*{password}"></p>
-                </div>
-                <div class="col-md-6">
-                  <input type="submit" class="btn btn-primary" value=" Sign Up ">
-                  <input type="reset" class="btn btn-danger" value=" Reset ">
-                </div>
-
-                <p class="text-center text-muted mt-5 mb-0">Already Have an account? <a
-                        th:href="@{/login}"
-                        class="fw-bold text-body"><u>Login here</u></a></p>
-              </form>
-              <h4 th:text="${message}" style="color: #00f352">Renter Registration Successful</h4>
-            </div>
-          </div>
+<div class="container">
+  <div class="title">Roomer Registration</div>
+  <div class="content">
+    <form class="forms" th:action="@{/registration}" th:method="post" th:object="${registerDto}">
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Full Name</span>
+          <input type="text" class="form-control input-lg"
+                 th:field="*{name}" placeholder="Full Name ">
+          <p style="color: red" class="message" th:if="${#fields.hasErrors('name')}"
+             th:errors="*{name}"></p>
+        </div>
+        <div class="input-box">
+          <span class="details">Address</span>
+          <input type="text" class="form-control" th:field="*{address}"
+                 id="inputPassword5" placeholder="Address ">
+          <p style="color: red" class="message" th:if="${#fields.hasErrors('address')}"
+             th:errors="*{address}"></p>
+        </div>
+        <div class="input-box">
+          <span class="details">Citizenship no.</span>
+          <input type="number" class="form-control" id="inputPassword7"
+                 th:field="*{citizenshipNo}" placeholder="Id Number *">
+          <p style="color: red" class="message" th:if="${#fields.hasErrors('citizenshipNo')}"
+             th:errors="*{citizenshipNo}"></p>          </div>
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input type="number" class="form-control" th:field="*{mobileNumber}"
+                 id="inputEmail6" placeholder="Number *">
+          <p style="color: red" class="message" th:if="${#fields.hasErrors('mobileNumber')}"
+             th:errors="*{mobileNumber}"></p>
+        </div>
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input type="email" class="form-control" th:field="*{email}"
+                 id="inputAddress" placeholder="Email *">
+          <p style="color: red" class="message" th:if="${#fields.hasErrors('email')}"
+             th:errors="*{email}"></p>
+        </div>
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input type="password" class="form-control" th:field="*{password}"
+                 id="inputPassword4" placeholder="Password" required>
+          <p style="color: red" class="message" th:if="${#fields.hasErrors('password')}"
+             th:errors="*{password}"></p>
         </div>
       </div>
-    </div>
+      <div class="gender-details">
+        <input type="radio" name="gender" id="dot-1">
+        <input type="radio" name="gender" id="dot-2">
+        <input type="radio" name="gender" id="dot-3">
+        <span class="gender-title">Gender</span>
+        <div class="category">
+          <select name="gender" th:field="*{gender}" class="form-select" aria-label="Default select example"
+                  required/>
+          <option value="">Select Gender</option>
+          <th:block th:each="gender : ${T(com.example.houserentingsystem.enums.Gender).values()}">
+            <option
+                    th:value="${gender}"
+                    th:text="${gender}">
+
+            </option>
+          </th:block>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <button type="reset" class="btn btn-danger">Reset</button>
+      <p class="text-center text-muted mt-5 mb-0">Have already an account? <a th:href="@{/login}"
+                                                                              class="fw-bold text-body"><u>Login
+        here</u></a></p>
+    </form>
+    <h4 th:text="${message}" style="color: #00ff51">Roomer Register</h4>
   </div>
-</section>
+</div>
 </body>
 </html>

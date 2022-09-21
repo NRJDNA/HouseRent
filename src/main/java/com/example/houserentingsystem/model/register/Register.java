@@ -37,4 +37,7 @@ public class Register {
 
     @Column(name = "mobile_number", nullable = false)
     private String mobileNumber;
+
+    @Column
+    private String address;
 }
